@@ -1,0 +1,16 @@
+{
+  "source": "novos_frames_producao",
+  "frame_count": 240,
+  "digits": 3,
+  "desktop": {
+    "width": 1280,
+    "height": 720,
+    "pattern": "desktop/frame_%03d.jpg"
+  },
+  "mobile": {
+    "width": 1280,
+    "height": 720,
+    "pattern": "mobile/frame_%03d.jpg"
+  },
+  "notes": "Nova sequência de 240 frames JPG (frame_001.jpg a frame_240.jpg) com carregamento progressivo e renderização em Canvas via ScrollTrigger."
+}

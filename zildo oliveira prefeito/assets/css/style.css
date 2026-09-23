@@ -1,0 +1,338 @@
+/* ==========================================================================
+   ESTILOS PERSONALIZADOS - ZILDO OLIVEIRA (PREFEITO DE TOLEDO-MG)
+   Identidade Visual: Azul Nobre Institucional (#0A192F / #0F2C59) & Amarelo Tucano (#FACC15 / #EAB308)
+   Estética de Campanha Pública de Alto Impacto, Sem Fundos Brancos Brutos
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap');
+
+:root {
+  --bg-deep: #081326;
+  --bg-navy: #0A192F;
+  --bg-navy-dark: #07101E;
+  --bg-navy-surface: #0F2444;
+  --bg-navy-card: #132D54;
+  --color-tucano: #FACC15;
+  --color-tucano-dark: #EAB308;
+  --color-blue-accent: #2563EB;
+  --color-blue-light: #60A5FA;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-tucano: rgba(250, 204, 21, 0.35);
+  --font-heading: 'Montserrat', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--bg-deep);
+  color: #E2E8F0;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--bg-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Tipografia */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Grain / Ruído Editorial Contínuo (Film Grain Overlay) */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-navy-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #1B3B6F;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-tucano-dark);
+}
+
+/* ==========================================================================
+   HERO FRAME-BY-FRAME CINEMATOGRÁFICA (HTML5 CANVAS)
+   ========================================================================== */
+.hero-viewport {
+  min-height: 100svh;
+  height: 100svh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #050B14;
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+/* Overlays Gradientes em Azul Nobre */
+.hero-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(10, 25, 47, 0.15) 0%, rgba(10, 25, 47, 0.5) 60%, rgba(8, 19, 38, 0.9) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-bottom-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 42%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(10, 25, 47, 0.7) 50%, rgba(8, 19, 38, 0.98) 85%, var(--bg-deep) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-top-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 25%;
+  background: linear-gradient(to top, transparent 0%, rgba(8, 19, 38, 0.8) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Tipografia Fluida Clamped da Hero */
+.hero-title {
+  font-size: clamp(2.1rem, 5.5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.hero-eyebrow {
+  font-size: clamp(0.7rem, 1.1vw, 0.85rem);
+  letter-spacing: 0.16em;
+}
+
+.hero-description {
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  line-height: 1.6;
+}
+
+/* Ajustes Mobile específicos da Hero */
+@media (max-width: 768px) {
+  .hero-content-container {
+    justify-content: flex-end;
+    padding-bottom: 2.2rem;
+  }
+}
+
+/* ==========================================================================
+   SEÇÃO DE STORYTELLING COM ZOOM DA CIDADE (ESTILO RENAN SANTOS)
+   ========================================================================== */
+.city-story-viewport {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background-color: #060E1A;
+}
+
+.city-zoom-bg {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) contrast(125%) brightness(65%);
+  will-change: transform;
+}
+
+.city-story-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(10, 25, 47, 0.35) 0%, rgba(8, 19, 38, 0.85) 75%, rgba(6, 14, 26, 0.98) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.city-step-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 10;
+}
+
+.city-step-card.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Indicador lateral de passos (01, 02, 03) */
+.story-indicator-line {
+  width: 2px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.story-indicator-line.active {
+  background-color: var(--color-tucano);
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
+  height: 48px;
+}
+
+/* Loader discreto */
+.hero-loader-bar {
+  transition: width 0.2s ease-out, opacity 0.5s ease;
+}
+
+/* Glassmorphism e Superfícies em Azul Nobre */
+.glass-nav-navy {
+  background: rgba(10, 25, 47, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-navy-nobel {
+  background: var(--bg-navy-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-navy-nobel:hover {
+  border-color: rgba(250, 204, 21, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(250, 204, 21, 0.12);
+}
+
+/* Gradientes Amarelo Tucano */
+.text-tucano-gradient {
+  background: linear-gradient(135deg, #FEF08A 0%, #FACC15 50%, #EAB308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-tucano-gradient {
+  background: linear-gradient(135deg, #FDE047 0%, #FACC15 60%, #EAB308 100%);
+}
+
+.border-tucano-glow {
+  border-color: rgba(250, 204, 21, 0.4);
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+}
+
+/* Linha de Timeline Tucano */
+.timeline-tucano-track {
+  background: linear-gradient(180deg, #FACC15 0%, rgba(250, 204, 21, 0.2) 100%);
+}
+
+/* Barras de progresso com brilho contínuo */
+.progress-bar-tucano {
+  background: linear-gradient(90deg, #EAB308 0%, #FACC15 70%, #FEF08A 100%);
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.4);
+}
+
+/* Efeito de Brilho Radial Azul / Amarelo Sutil */
+.glow-navy-spot {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 62, 114, 0.35) 0%, rgba(10, 25, 47, 0) 70%);
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+.glow-tucano-spot {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.1) 0%, rgba(250, 204, 21, 0) 70%);
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+/* ==========================================================================
+   PROJETOS EM ANDAMENTO - Barras de Progresso e Cards
+   ========================================================================== */
+.progress-bar-tucano {
+  background: linear-gradient(90deg, #EAB308 0%, #FACC15 70%, #FEF08A 100%);
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.4);
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 9999px;
+}
+
+.progress-bar-green {
+  background: linear-gradient(90deg, #059669 0%, #10B981 70%, #6EE7B7 100%);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 9999px;
+}
+
+.project-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover {
+  border-color: rgba(250, 204, 21, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(250, 204, 21, 0.1);
+}
+
+/* ==========================================================================
+   GALERIA DO POVO - Bento Grid & Hover Effects
+   ========================================================================== */
+.gallery-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover {
+  border-color: rgba(250, 204, 21, 0.3);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(250, 204, 21, 0.1);
+}
+
+/* Acessibilidade: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
