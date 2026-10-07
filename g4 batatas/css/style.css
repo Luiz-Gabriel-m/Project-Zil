@@ -1,0 +1,358 @@
+/* ==========================================================================
+   G4 BATATAS - MINIMALIST HIGH-END AGRIBUSINESS SCROLL-DRIVEN EXPERIENCE
+   Palette:
+   - Deep Agro Dark: #091510 / #0c1c14 / #0f1f17
+   - Emerald Agro: #18793b / #22a351
+   - Warm Gold: #f9b000 / #ffc72c
+   - Earth Brown: #593215 / #2e1a0b
+   - Typography: Outfit & Plus Jakarta Sans
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --color-bg-dark: #091510;
+  --color-bg-deep: #060e0a;
+  --color-brand-green: #18793b;
+  --color-brand-gold: #f9b000;
+  --color-brand-gold-light: #ffc72c;
+  --color-text-dim: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg-dark);
+  color: #f8fafc;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-bg-dark);
+  color: #ffffff;
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Headings font */
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #060e0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #18793b;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f9b000;
+}
+
+/* Minimalist Glass Panels */
+.clean-glass-card {
+  background: rgba(12, 28, 20, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.clean-glass-card:hover {
+  border-color: rgba(249, 176, 0, 0.35);
+  background: rgba(12, 28, 20, 0.82);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(24, 121, 59, 0.15);
+}
+
+/* Pinned Hero Elements */
+#hero-pin-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #060e0a;
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Subtle Vignette on Hero Canvas */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(circle at center, transparent 35%, rgba(6, 14, 10, 0.75) 90%),
+              linear-gradient(180deg, rgba(6, 14, 10, 0.6) 0%, transparent 25%, transparent 75%, rgba(9, 21, 16, 0.95) 100%);
+  pointer-events: none;
+}
+
+/* Center Logo Container on Scroll 0% */
+#hero-center-logo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Subtle pulse glow for central logo */
+.logo-halo {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(249, 176, 0, 0.22) 0%, rgba(24, 121, 59, 0.15) 50%, transparent 70%);
+  filter: blur(20px);
+  animation: pulse-halo 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-halo {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0.9; }
+}
+
+/* Lateral Content Blocks on Hero */
+.hero-lateral-block {
+  position: absolute;
+  z-index: 15;
+  pointer-events: auto;
+  will-change: opacity, transform;
+}
+
+/* Refined Minimalist Button */
+.btn-minimal-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249, 176, 0, 0.12);
+  color: #ffc72c;
+  border: 1px solid rgba(249, 176, 0, 0.4);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-minimal-gold:hover {
+  background: #f9b000;
+  color: #060e0a;
+  border-color: #f9b000;
+  box-shadow: 0 0 20px rgba(249, 176, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* External Link Badge */
+.external-badge {
+  background: rgba(6, 14, 10, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(249, 176, 0, 0.35);
+  color: #f9b000;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.clean-glass-card:hover .external-badge {
+  background: #f9b000;
+  color: #060e0a;
+}
+
+/* Toast alert */
+.toast-notice {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #0f2b1d;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  z-index: 110;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid #f9b000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast-notice.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+  padding: 12px 18px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5);
+  color: #ffffff;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  #hero-left-content {
+    left: 16px !important;
+    bottom: 20px !important;
+    top: auto !important;
+    transform: none !important;
+    max-width: calc(100vw - 32px) !important;
+  }
+  #hero-right-content {
+    display: none !important; /* Hide right metrics on ultra-small screens to preserve 100% center clarity */
+  }
+}
+
+/* ==========================================================================
+   ECOSSISTEMA OPERACIONAL & BENEFICIAMENTO - G4 BATATAS (AWWWARDS STANDARD)
+   ========================================================================== */
+
+/* 3D Tilt Cards & Hover Elevation */
+.ecosystem-card {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.ecosystem-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85),
+              0 0 35px rgba(24, 121, 59, 0.28),
+              0 0 1px 1px rgba(255, 199, 44, 0.3);
+}
+
+/* Radial Interactive Spotlight */
+.card-spotlight {
+  background: radial-gradient(
+    550px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 199, 44, 0.14),
+    rgba(24, 121, 59, 0.08) 35%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+
+/* Calibre Selectable Pills */
+.calibre-pill {
+  background: rgba(8, 20, 14, 0.85);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  min-height: 44px;
+}
+
+.calibre-pill:hover {
+  border-color: rgba(255, 199, 44, 0.45);
+  color: #ffffff;
+  background: rgba(14, 34, 24, 0.95);
+}
+
+.calibre-pill.active-pill {
+  background: rgba(255, 199, 44, 0.16) !important;
+  border-color: #ffc72c !important;
+  color: #ffc72c !important;
+  box-shadow: 0 0 16px rgba(255, 199, 44, 0.3), inset 0 0 12px rgba(255, 199, 44, 0.1);
+}
+
+/* Wash Toggle Buttons */
+.wash-toggle-btn {
+  min-height: 42px;
+}
+
+.wash-toggle-btn.active-wash {
+  background: rgba(24, 121, 59, 0.45) !important;
+  border-color: #ffc72c !important;
+  color: #ffc72c !important;
+  box-shadow: 0 0 14px rgba(255, 199, 44, 0.25);
+}
+
+/* Modal Open State */
+.modal-active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.modal-active .clean-glass-card {
+  transform: scale(1) !important;
+}
+
+#modal-planting .clean-glass-card,
+#modal-galpao .clean-glass-card {
+  transform: scale(0.96);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slow Spin Animation for Gear/Loop Icon */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 8s linear infinite;
+}
+
+/* Custom glowing pulse for metrics */
+@keyframes goldPulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 199, 44, 0.4)); }
+  50% { filter: drop-shadow(0 0 16px rgba(255, 199, 44, 0.8)); }
+}
+
+.gold-glow-pulse {
+  animation: goldPulseGlow 3s ease-in-out infinite;
+}
+

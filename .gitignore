@@ -1,8 +1,14 @@
-/g4 batatas
+# Backups e arquivos pesados
+backups/
+*.zip
+**/*.zip
+
+# Projetos adicionais ignorados
 /zildo
-/zildo oliveira prefeito (2).zip
-/zildo oliveira prefeito (3).zip
-/zildo oliveira prefeito (4).zip
-/zildo oliveira prefeito.zip
 /zilholding
 /zilimoveis
+
+# Sistema e Vercel
+.DS_Store
+Thumbs.db
+.vercel

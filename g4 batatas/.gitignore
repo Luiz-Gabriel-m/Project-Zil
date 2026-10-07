@@ -1,0 +1,5 @@
+# Ignorar arquivos compactados de backup pesados (>300MB)
+*.zip
+.DS_Store
+Thumbs.db
+.vercel

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G4 Batatas | O Sabor da Qualidade</title>
+  <meta name="description" content="G4 Beneficiadora de Batatas Ltda - Excelência em pós-colheita, lavagem técnica e distribuição no polo agrícola de Cristalina – GO.">
+  <link rel="icon" type="image/png" href="assets/logo-badge-transparent.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#18793b',
+              'green-light': '#22a351',
+              'green-dark': '#0d4621',
+              gold: '#f9b000',
+              'gold-light': '#ffc72c',
+              dark: '#091510',
+              deep: '#060e0a'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Outfit"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP, ScrollTrigger & Flip -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+
+  <!-- VanillaTilt 3D Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#091510] text-white selection:bg-[#f9b000] selection:text-[#060e0a] relative overflow-x-hidden">
+
+  <!-- FIXED MINIMAL NAVBAR -->
+  <header id="main-navbar" class="fixed top-0 left-0 w-full z-50 py-5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex items-center justify-between">
+        
+        <!-- Brand identity -->
+        <a href="#hero-pin-container" class="flex items-center gap-3 group focus:outline-none" aria-label="G4 Batatas Home">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+            <img src="assets/logo-badge-transparent.png" alt="Logo G4" class="w-full h-full object-contain filter drop-shadow">
+          </div>
+          <div class="flex flex-col">
+            <span class="font-heading font-black text-lg sm:text-xl tracking-tight text-white group-hover:text-[#f9b000] transition-colors">
+              G4 <span class="text-[#f9b000]">BATATAS</span>
+            </span>
+            <span class="text-[9px] uppercase tracking-widest text-emerald-400 font-medium">O Sabor da Qualidade</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-wider font-semibold text-gray-300">
+          <a href="#hero-pin-container" class="hover:text-[#f9b000] transition-colors">Início</a>
+          <a href="#manifesto" class="hover:text-[#f9b000] transition-colors">Manifesto & Trajetória</a>
+          <a href="#ecossistema" class="hover:text-[#f9b000] transition-colors">Ecossistema Operacional</a>
+          <a href="#contato" class="hover:text-[#f9b000] transition-colors">Contato Oficial</a>
+        </nav>
+
+        <!-- Right Action Button -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a href="#contato" class="btn-minimal-gold">
+            <span>Falar com o Comercial</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none" aria-label="Abrir Menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#060e0a]/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 transition-all">
+      <div class="flex flex-col gap-4 text-sm font-semibold uppercase tracking-wider">
+        <a href="#hero-pin-container" class="mobile-nav-link text-gray-200 hover:text-[#f9b000] py-2 border-b border-white/5">Início</a>
+        <a href="#manifesto" class="mobile-nav-link text-gray-200 hover:text-[#f9b000] py-2 border-b border-white/5">Manifesto & Trajetória</a>
+        <a href="#ecossistema" class="mobile-nav-link text-gray-200 hover:text-[#f9b000] py-2 border-b border-white/5">Ecossistema Operacional</a>
+        <a href="#contato" class="mobile-nav-link text-gray-200 hover:text-[#f9b000] py-2 border-b border-white/5">Contato Oficial</a>
+        <div class="pt-2">
+          <a href="https://wa.me/5535997132495" target="_blank" rel="noopener noreferrer" class="btn-minimal-gold w-full justify-center py-2.5">
+            <span>WhatsApp (35) 99713-2495</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       SEÇÃO 1: HERO PIN (Canvas Sequencer + Desobstrução Central + Textos Laterais)
+       ========================================================================= -->
+  <section id="hero-pin-container" class="relative">
+    
+    <!-- Canvas for 60fps Scrollytelling Sequence -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- Subtle Vignette Layer -->
+    <div class="hero-vignette"></div>
+
+    <!-- ESTADO INICIAL (Scroll 0%): Logo Central Limpo com Fade Sutil de Entrada -->
+    <div id="hero-center-logo" class="px-4 text-center">
+      <div class="relative flex flex-col items-center justify-center">
+        <!-- Subtle pulsing radial halo -->
+        <div class="logo-halo pointer-events-none"></div>
+
+        <!-- Official G4 Transparent Logo Badge -->
+        <div class="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 mb-5 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.85)]">
+          <img src="assets/logo-badge-transparent.png" alt="Logotipo G4 Batatas" class="w-full h-full object-contain">
+        </div>
+
+        <h1 class="font-heading font-black text-2xl sm:text-3xl md:text-4xl text-white tracking-wide uppercase mb-1">
+          G4 <span class="text-[#f9b000]">BATATAS</span>
+        </h1>
+        <p class="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-[#ffc72c]/90">
+          O Sabor da Qualidade
+        </p>
+      </div>
+
+      <!-- Discreet Scroll Indicator at Bottom -->
+      <div id="hero-scroll-prompt" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none text-gray-400">
+        <span class="text-[11px] uppercase tracking-widest font-medium opacity-80">Role para explorar</span>
+        <div class="w-5 h-8 rounded-full border border-gray-400/40 flex justify-center pt-1">
+          <span class="w-1 h-2 bg-[#f9b000] rounded-full animate-bounce"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEXTOS LATERAIS DA HERO: Revelados suavemente conforme o scroll avança -->
+    <!-- Lado Esquerdo: Identidade & Pós-Colheita -->
+    <div id="hero-left-content" class="hero-lateral-block left-5 sm:left-10 lg:left-14 top-1/2 -translate-y-1/2 max-w-xs sm:max-w-sm pointer-events-auto">
+      <div class="clean-glass-card p-6 sm:p-7 rounded-2xl border-l-2 border-l-[#18793b]">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold uppercase tracking-wider mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Pós-Colheita & Beneficiamento</span>
+        </div>
+        <h2 class="font-heading font-extrabold text-xl sm:text-2xl text-white leading-tight mb-2.5">
+          G4 Beneficiadora de Batatas
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+          Excelência operacional e infraestrutura de ponta no polo de <strong class="text-white">Cristalina – GO</strong>. Lavagem contínua com água tratada e seleção técnica por padrão comercial.
+        </p>
+        <a href="#manifesto" class="inline-flex items-center gap-2 text-xs font-semibold text-[#f9b000] hover:text-[#ffc72c] transition-colors">
+          <span>Conheça a Trajetória</span>
+          <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Lado Direito: Métricas Rápidas & Indicadores de Impacto -->
+    <div id="hero-right-content" class="hero-lateral-block right-5 sm:right-10 lg:right-14 top-1/2 -translate-y-1/2 max-w-xs sm:max-w-sm pointer-events-auto text-right">
+      <div class="clean-glass-card p-6 sm:p-7 rounded-2xl border-r-2 border-r-[#f9b000] text-left sm:text-right">
+        <div class="space-y-4">
+          <div>
+            <span class="text-[10px] font-mono font-bold text-[#f9b000] uppercase tracking-wider block mb-0.5">Atividade Principal</span>
+            <p class="font-heading font-extrabold text-sm sm:text-base text-white">CNAE 0163-6/00</p>
+            <p class="text-[11px] text-gray-400">Atividades especializadas de pós-colheita</p>
+          </div>
+          <div class="pt-3 border-t border-white/5">
+            <span class="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-wider block mb-0.5">Integridade & Pureza</span>
+            <p class="font-heading font-extrabold text-sm sm:text-base text-white">100% Água Tratada</p>
+            <p class="text-[11px] text-gray-400">Higienização contínua sem microlesões</p>
+          </div>
+          <div class="pt-3 border-t border-white/5">
+            <span class="text-[10px] font-mono font-bold text-[#f9b000] uppercase tracking-wider block mb-0.5">Planalto Central & BR-050</span>
+            <p class="font-heading font-extrabold text-sm sm:text-base text-white">Prontidão Logística</p>
+            <p class="text-[11px] text-gray-400">Escoamento ágil para Ceasas e grandes redes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SEÇÃO 2: MANIFESTO & TRAJETÓRIA (Citação Editorial & Linha do Tempo)
+       ========================================================================= -->
+  <section id="manifesto" class="py-28 px-5 sm:px-8 max-w-6xl mx-auto relative z-20">
+    
+    <!-- Citação Editorial Limpa -->
+    <div class="manifesto-quote max-w-3xl mx-auto text-center mb-24">
+      <span class="inline-block text-[11px] font-mono uppercase tracking-[0.25em] text-[#f9b000] font-bold mb-4">
+        Manifesto de Origem
+      </span>
+      <blockquote class="font-heading text-2xl sm:text-3xl md:text-4xl font-medium text-white/95 leading-relaxed tracking-tight">
+        “A verdadeira excelência no campo nasce do respeito ao solo, da tecnologia de ponta e do compromisso inegociável de entregar alimentos com padrão superior de qualidade.”
+      </blockquote>
+      <div class="flex items-center justify-center gap-3 mt-8">
+        <span class="w-8 h-[1px] bg-emerald-500/50"></span>
+        <span class="text-xs uppercase tracking-widest text-emerald-400 font-semibold">G4 Beneficiadora de Batatas Ltda</span>
+        <span class="w-8 h-[1px] bg-emerald-500/50"></span>
+      </div>
+    </div>
+
+    <!-- Linha do Tempo de Liderança / História -->
+    <div>
+      <div class="text-center max-w-xl mx-auto mb-14">
+        <span class="text-[10px] uppercase font-mono tracking-widest text-[#f9b000] font-bold block mb-1">
+          Evolução Estruturada
+        </span>
+        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight">
+          Marcos da Trajetória
+        </h2>
+      </div>
+
+      <div id="timeline-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Marco 01 -->
+        <div class="timeline-card clean-glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+          <div>
+            <span class="text-2xl font-black font-heading text-[#f9b000] block mb-2">01</span>
+            <h3 class="font-heading font-bold text-base uppercase text-white mb-2">Fundação & Vocação</h3>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              Estabelecimento da beneficiadora em Cristalina – GO, combinando vocação agrícola com investimentos em maquinários próprios.
+            </p>
+          </div>
+          <span class="text-[10px] font-mono text-emerald-400/80 uppercase tracking-wider mt-5 block border-t border-white/5 pt-3">Ativa desde 2021</span>
+        </div>
+
+        <!-- Marco 02 -->
+        <div class="timeline-card clean-glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+          <div>
+            <span class="text-2xl font-black font-heading text-[#f9b000] block mb-2">02</span>
+            <h3 class="font-heading font-bold text-base uppercase text-white mb-2">Tecnologia Técnica</h3>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              Modernização dos tanques de lavagem contínua em água tratada, garantindo tubérculos de casca brilhante e limpa sem lesões.
+            </p>
+          </div>
+          <span class="text-[10px] font-mono text-emerald-400/80 uppercase tracking-wider mt-5 block border-t border-white/5 pt-3">Fluxo Contínuo</span>
+        </div>
+
+        <!-- Marco 03 -->
+        <div class="timeline-card clean-glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+          <div>
+            <span class="text-2xl font-black font-heading text-[#f9b000] block mb-2">03</span>
+            <h3 class="font-heading font-bold text-base uppercase text-white mb-2">Padronização & Rigor</h3>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              Esteiras iluminadas com triagem manual criteriosa por tamanho e calibre comercial exigido por Ceasas e grandes redes.
+            </p>
+          </div>
+          <span class="text-[10px] font-mono text-emerald-400/80 uppercase tracking-wider mt-5 block border-t border-white/5 pt-3">Padrão Especial / Ágata</span>
+        </div>
+
+        <!-- Marco 04 -->
+        <div class="timeline-card clean-glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between">
+          <div>
+            <span class="text-2xl font-black font-heading text-[#f9b000] block mb-2">04</span>
+            <h3 class="font-heading font-bold text-base uppercase text-white mb-2">Expansão Logística</h3>
+            <p class="text-xs text-gray-300 leading-relaxed font-sans">
+              Escoamento acelerado pelo entroncamento BR-050/BR-040, conectando safras frescas diretamente às capitais do país.
+            </p>
+          </div>
+          <span class="text-[10px] font-mono text-emerald-400/80 uppercase tracking-wider mt-5 block border-t border-white/5 pt-3">Distribuição Nacional</span>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SEÇÃO 3: ECOSSISTEMA OPERACIONAL & BENEFICIAMENTO — G4 BATATAS
+       Substitui integralmente o antigo Hub de Empreendimentos (Farmazil, Zil Empreendimentos, Família, Ação Comunitária)
+       ========================================================================= -->
+  <section id="ecossistema" class="py-28 sm:py-36 px-5 sm:px-8 max-w-7xl mx-auto relative z-20">
+    
+    <!-- Anchor invisível para compatibilidade com links antigos -->
+    <div id="empreendimentos" class="absolute -top-24 pointer-events-none"></div>
+
+    <!-- Ambient Glow Orbs -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-[#ffc72c]/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+    <!-- 1. CABEÇALHO DA SEÇÃO (Header de Alto Impacto) -->
+    <div class="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
+      
+      <!-- Tag Superior (Badge Neon/Pill) -->
+      <div class="uppercase tracking-[0.25em] text-xs font-bold text-[#ffc72c] bg-[#18793b]/20 px-4 py-1.5 rounded-full border border-[#ffc72c]/30 backdrop-blur-md inline-flex items-center gap-2 mb-5 shadow-[0_0_20px_rgba(24,121,59,0.35)]">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+        </span>
+        <span>🟢 POLO AGRÍCOLA DE CRISTALINA - GO | DESDE 2021</span>
+      </div>
+
+      <!-- Título Principal (Display Font com Gradiente Metálico) -->
+      <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.15] mb-5">
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-[#f3f4f6] to-[#ffc72c]">
+          DA TERRA AO BENEFICIAMENTO: A FORÇA DA G4 BATATAS
+        </span>
+      </h2>
+
+      <!-- Subtítulo -->
+      <p class="text-sm sm:text-base md:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-sans font-normal">
+        Estrutura completa de pós-colheita, tecnologia de ponta e padronização rigorosa abastecendo os maiores centros de distribuição do Brasil.
+      </p>
+    </div>
+
+    <!-- 2. ARQUITETURA INTERATIVA (O NOVO GRID 4.0) -->
+    <div id="ecosystem-grid" class="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8">
+      
+      <!-- 🥔 CARD 1: CULTIVO & MANEJO DE PRECISÃO (Substitui 'Farmazil') -->
+      <article class="ecosystem-card backdrop-blur-xl bg-black/60 border border-emerald-500/20 hover:border-[#ffc72c]/60 transition-all duration-500 rounded-3xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between shadow-2xl"
+               data-tilt data-tilt-max="12" data-tilt-speed="1000">
+        
+        <!-- Interactive Spotlight Glow -->
+        <div class="card-spotlight pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative z-10 flex flex-col h-full justify-between">
+          
+          <!-- Top Area: Image & Floating Badge -->
+          <div>
+            <div class="relative h-60 sm:h-64 w-full rounded-2xl overflow-hidden bg-black/80 mb-6 border border-white/5">
+              <img id="card1-img" src="assets/frames/gemini_generated_video_6b864665_014.png" alt="Manejo e Plantio de Batata em Cristalina"
+                   class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 filter brightness-95 contrast-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-black/10"></div>
+              
+              <!-- Tag Flutuante Superior -->
+              <div class="absolute top-3.5 left-3.5 bg-black/85 backdrop-blur-md text-[#ffc72c] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border border-[#ffc72c]/40 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>FASE 01 • PREPARO & LAVOURA <span class="text-gray-400 font-mono text-[9px] ml-1">(CNAE 0161-0/03)</span></span>
+              </div>
+
+              <!-- Quick Geo Badge -->
+              <div class="absolute top-3.5 right-3.5 bg-emerald-950/80 backdrop-blur-md text-emerald-300 text-[9px] font-mono uppercase px-2.5 py-1 rounded-md border border-emerald-500/30">
+                Solo de Cristalina
+              </div>
+
+              <!-- Visual Stage Overlay Indicator -->
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-gray-300">
+                <span class="font-medium flex items-center gap-1.5">
+                  <i data-lucide="sprout" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>Brotação & Maturação Otimizada</span>
+                </span>
+                <span class="font-mono text-[#ffc72c] text-[10px]">Altitude: 1.200m</span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-white uppercase group-hover:text-[#ffc72c] transition-colors mb-2.5">
+              MANEJO & APOIO AGRÍCOLA
+            </h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-sans mb-5">
+              Controle rigoroso desde a preparação do solo até o ponto ideal de maturação dos tubérculos. Solo fértil de Cristalina aliado a acompanhamento agronômico diário.
+            </p>
+
+            <!-- Componente Interativo Embutido (Live Metric) -->
+            <div class="bg-black/50 backdrop-blur-md rounded-2xl p-4 border border-emerald-500/20 mb-5">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="text-gray-300 font-semibold flex items-center gap-1.5">
+                  <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  Sanidade & Calibre
+                </span>
+                <span class="font-mono font-black text-[#ffc72c] text-sm">99.4%</span>
+              </div>
+              
+              <!-- Progress Bar Track & Glow Fill -->
+              <div class="w-full h-2.5 bg-emerald-950/80 rounded-full border border-emerald-500/30 overflow-hidden relative">
+                <div class="progress-bar-fill h-full bg-gradient-to-r from-emerald-500 via-[#22a351] to-[#ffc72c] rounded-full transition-all duration-1000 ease-out shadow-[0_0_12px_rgba(255,199,44,0.6)]"
+                     style="width: 99.4%;"></div>
+              </div>
+
+              <!-- Chip tátil -->
+              <div class="mt-3.5 flex items-center justify-between">
+                <button type="button" class="btn-open-planting-modal group/btn inline-flex items-center gap-2 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-emerald-500/15 hover:bg-[#ffc72c]/20 text-[#ffc72c] border border-[#ffc72c]/40 hover:border-[#ffc72c] transition-all cursor-pointer">
+                  <span>+ Ver detalhes do plantio</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform"></i>
+                </button>
+                <span class="text-[10px] font-mono text-gray-400">Safra Contínua</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rodapé do Card: Badges estilo terminal -->
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between flex-wrap gap-2 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="font-mono text-[10px] sm:text-[11px] bg-black/60 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-md flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Solo Corrigido
+              </span>
+              <span class="font-mono text-[10px] sm:text-[11px] bg-black/60 text-[#ffc72c] border border-[#ffc72c]/30 px-2.5 py-1 rounded-md flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#ffc72c]"></span>Produtividade Máxima
+              </span>
+            </div>
+            <span class="text-[10px] text-gray-400 font-mono">Pivô Central</span>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ⚙️ CARD 2: BENEFICIAMENTO & LAVAGEM INDUSTRIAL (Substitui 'Zil Empreendimentos') -->
+      <article class="ecosystem-card backdrop-blur-xl bg-black/60 border border-emerald-500/20 hover:border-[#ffc72c]/60 transition-all duration-500 rounded-3xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between shadow-2xl"
+               data-tilt data-tilt-max="12" data-tilt-speed="1000">
+        
+        <!-- Interactive Spotlight Glow -->
+        <div class="card-spotlight pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative z-10 flex flex-col h-full justify-between">
+          
+          <!-- Top Area: Image & Floating Badge -->
+          <div>
+            <div class="relative h-60 sm:h-64 w-full rounded-2xl overflow-hidden bg-black/80 mb-6 border border-white/5">
+              <!-- Dual wash preview images for before/after toggle -->
+              <img id="card2-img-clean" src="assets/galpao-lavagem-clean.jpg" alt="Lavagem Industrial G4 Batatas"
+                   class="wash-view-layer w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 filter brightness-105 contrast-110">
+              <img id="card2-img-raw" src="assets/galpao-lavagem.jpg" alt="Lavagem Bruta"
+                   class="wash-view-layer absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 filter sepia-[0.35] brightness-90 contrast-125">
+              
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-black/10 pointer-events-none"></div>
+
+              <!-- Tag Flutuante Superior -->
+              <div class="absolute top-3.5 left-3.5 bg-black/85 backdrop-blur-md text-[#ffc72c] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border border-[#ffc72c]/40 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>FASE 02 • CORE BUSINESS <span class="text-gray-400 font-mono text-[9px] ml-1">(CNAE 0163-6/00)</span></span>
+              </div>
+
+              <!-- Badge Dinâmico de Estado de Lavagem -->
+              <div id="wash-stage-indicator" class="absolute bottom-3 left-3 bg-black/80 backdrop-blur-md text-[10px] font-mono px-3 py-1 rounded-md border border-emerald-500/40 text-emerald-300 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="wash-stage-text">Padrão Higienizado: Água Tratada</span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-white uppercase group-hover:text-[#ffc72c] transition-colors mb-2.5">
+              LAVAGEM & HIGIENIZAÇÃO TÉCNICA
+            </h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-sans mb-5">
+              Tanques industriais com fluxo contínuo de água tratada. Remoção milimétrica de terra e impurezas sem ferir a casca, garantindo brilho, durabilidade e padrão estético comercial.
+            </p>
+
+            <!-- Componente Interativo Embutido (Interactive Toggle Switch) -->
+            <div class="bg-black/50 backdrop-blur-md rounded-2xl p-3 sm:p-4 border border-emerald-500/20 mb-5">
+              <span class="text-[11px] uppercase font-mono tracking-wider text-gray-400 block mb-2 font-semibold">
+                Controle Interativo de Visualização:
+              </span>
+              <div class="grid grid-cols-2 gap-2 bg-black/70 p-1.5 rounded-xl border border-white/10">
+                <button type="button" id="btn-toggle-raw"
+                        class="wash-toggle-btn px-3 py-2 rounded-lg text-xs font-semibold text-gray-300 hover:text-white transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                  <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                  <span>Lavagem Bruta</span>
+                </button>
+                <button type="button" id="btn-toggle-clean"
+                        class="wash-toggle-btn active-wash px-3 py-2 rounded-lg text-xs font-semibold bg-[#18793b]/40 text-[#ffc72c] border border-[#ffc72c]/40 transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-[0_0_10px_rgba(255,199,44,0.2)]">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#ffc72c]"></i>
+                  <span>Padrão Higienizado</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rodapé do Card: Botão Link Visitar Galpão Virtual -->
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between flex-wrap gap-2 text-xs">
+            <button type="button" class="btn-open-galpao-modal group/btn inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-emerald-950/60 hover:bg-[#18793b]/40 text-[#ffc72c] hover:text-white border border-emerald-500/30 hover:border-[#ffc72c]/60 transition-all cursor-pointer">
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5 animate-spin-slow text-[#ffc72c]"></i>
+              <span>Visitar Galpão Virtual</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform"></i>
+            </button>
+            <span class="text-[11px] text-gray-400 font-mono">Fluxo Contínuo 24/7</span>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- ⚖️ CARD 3: CLASSIFICAÇÃO & CALIBRE GOURMET (Substitui 'Família & Valores') -->
+      <article class="ecosystem-card backdrop-blur-xl bg-black/60 border border-emerald-500/20 hover:border-[#ffc72c]/60 transition-all duration-500 rounded-3xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between shadow-2xl"
+               data-tilt data-tilt-max="12" data-tilt-speed="1000">
+        
+        <!-- Interactive Spotlight Glow -->
+        <div class="card-spotlight pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative z-10 flex flex-col h-full justify-between">
+          
+          <!-- Top Area: Image & Floating Badge -->
+          <div>
+            <div class="relative h-60 sm:h-64 w-full rounded-2xl overflow-hidden bg-black/80 mb-6 border border-white/5">
+              <img src="assets/galpao-selecao.jpg" alt="Classificação por Calibre de Batata"
+                   class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 filter brightness-100 contrast-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-black/10 pointer-events-none"></div>
+
+              <!-- Tag Flutuante Superior -->
+              <div class="absolute top-3.5 left-3.5 bg-black/85 backdrop-blur-md text-[#ffc72c] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border border-[#ffc72c]/40 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>FASE 03 • PADRONIZAÇÃO CEASA</span>
+              </div>
+
+              <!-- Quality Stamp Badge -->
+              <div class="absolute top-3.5 right-3.5 bg-black/80 backdrop-blur-md text-[#ffc72c] text-[9px] font-mono uppercase px-2.5 py-1 rounded-md border border-[#ffc72c]/30 flex items-center gap-1">
+                <i data-lucide="check" class="w-3 h-3 text-emerald-400"></i>
+                <span>Triagem Óptica & Manual</span>
+              </div>
+
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-gray-300">
+                <span class="font-medium">Esteiras Técnicas Iluminadas</span>
+                <span class="font-mono text-emerald-400 text-[10px]">Zero Impureza</span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-white uppercase group-hover:text-[#ffc72c] transition-colors mb-2.5">
+              SELEÇÃO RIGOROSA POR CALIBRE
+            </h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-sans mb-5">
+              Triagem manual e mecânica que separa as batatas por tamanho, tipo e ausência de avarias. Zero desperdício e máxima valorização da carga do produtor rural parceiro.
+            </p>
+
+            <!-- Componente Interativo Embutido (Pills de Calibragem Selecionáveis) -->
+            <div class="bg-black/50 backdrop-blur-md rounded-2xl p-4 border border-emerald-500/20 mb-5">
+              <span class="text-[11px] uppercase font-mono tracking-wider text-gray-400 block mb-2.5 font-semibold">
+                Selecione o Calibre Comercial:
+              </span>
+              
+              <!-- 3 Seletores Clicáveis -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-3">
+                <button type="button" data-calibre="especial"
+                        class="calibre-pill active-pill px-2.5 py-2 rounded-xl text-xs font-bold text-center border transition-all cursor-pointer">
+                  Calibre Especial (Lavada)
+                </button>
+                <button type="button" data-calibre="medio"
+                        class="calibre-pill px-2.5 py-2 rounded-xl text-xs font-bold text-center border transition-all cursor-pointer">
+                  Calibre Médio / Padrão
+                </button>
+                <button type="button" data-calibre="baby"
+                        class="calibre-pill px-2.5 py-2 rounded-xl text-xs font-bold text-center border transition-all cursor-pointer">
+                  Batata Miúda / Baby
+                </button>
+              </div>
+
+              <!-- Painel Dinâmico de Especificação -->
+              <div id="calibre-spec-panel" class="bg-black/60 rounded-xl p-3 border border-white/5 transition-all">
+                <div class="flex items-center justify-between text-xs mb-1">
+                  <span class="text-gray-400 font-mono">Peso Médio Estimado:</span>
+                  <span id="calibre-weight-val" class="font-heading font-bold text-[#ffc72c] text-sm">180g – 320g / tubérculo</span>
+                </div>
+                <div class="text-[11px] text-gray-300 leading-snug">
+                  <span class="text-emerald-400 font-semibold" id="calibre-diam-val">Diâmetro &gt; 60mm</span> — <span id="calibre-desc-val">Casca lisa e uniforme. Padrão exigido por Ceasas classe Especial e grandes redes de supermercados.</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Rodapé do Card: Controle de Avarias & Padrão Ativo -->
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between flex-wrap gap-2 text-xs">
+            <div class="flex items-center gap-1.5 text-emerald-400 font-semibold font-mono">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+              <span>Controle de Avarias: &lt; 1.2%</span>
+            </div>
+            <span id="calibre-footer-badge" class="font-mono text-[10px] text-[#ffc72c] bg-[#ffc72c]/10 border border-[#ffc72c]/30 px-2.5 py-1 rounded-md">
+              Padrão: Especial / Ágata
+            </span>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- 🚚 CARD 4: EXPEDIÇÃO, LOGÍSTICA & TRANSPARÊNCIA (Substitui 'Ação Comunitária') -->
+      <article class="ecosystem-card backdrop-blur-xl bg-black/60 border border-emerald-500/20 hover:border-[#ffc72c]/60 transition-all duration-500 rounded-3xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between shadow-2xl"
+               data-tilt data-tilt-max="12" data-tilt-speed="1000">
+        
+        <!-- Interactive Spotlight Glow -->
+        <div class="card-spotlight pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        <div class="relative z-10 flex flex-col h-full justify-between">
+          
+          <!-- Top Area: Image & Floating Badge -->
+          <div>
+            <div class="relative h-60 sm:h-64 w-full rounded-2xl overflow-hidden bg-black/80 mb-6 border border-white/5">
+              <img src="assets/frames/gemini_generated_video_6b864665_060.png" alt="Logística e Expedição G4 Batatas"
+                   class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 filter brightness-100 contrast-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-black/10 pointer-events-none"></div>
+
+              <!-- Tag Flutuante Superior -->
+              <div class="absolute top-3.5 left-3.5 bg-black/85 backdrop-blur-md text-[#ffc72c] text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg border border-[#ffc72c]/40 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>FASE 04 • PRONTIDÃO DE CARGA</span>
+              </div>
+
+              <!-- Road Badge -->
+              <div class="absolute top-3.5 right-3.5 bg-black/80 backdrop-blur-md text-emerald-300 text-[9px] font-mono uppercase px-2.5 py-1 rounded-md border border-emerald-500/30 flex items-center gap-1">
+                <i data-lucide="truck" class="w-3 h-3 text-[#ffc72c]"></i>
+                <span>BR-050 / BR-040</span>
+              </div>
+
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-gray-300">
+                <span class="font-medium">Sacaria Reforçada & Costura Mecânica</span>
+                <span class="font-mono text-[#ffc72c] text-[10px]">Saídas Diárias</span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-white uppercase group-hover:text-[#ffc72c] transition-colors mb-2.5">
+              LOGÍSTICA & SEGURANÇA FISCAL
+            </h3>
+            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed font-sans mb-5">
+              Acondicionamento em sacarias reforçadas com costura industrial e rastreabilidade total. Despacho ágil com saídas diárias para os principais entrepostos do país.
+            </p>
+
+            <!-- Componente Interativo Embutido (Drawer de Transparência / Dados Oficiais) -->
+            <div class="bg-black/50 backdrop-blur-md rounded-2xl p-4 border border-emerald-500/20 mb-5">
+              
+              <!-- Botão Accordion -->
+              <button type="button" id="btn-toggle-cnpj-accordion"
+                      class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-black/70 hover:bg-black/90 border border-emerald-500/30 hover:border-[#ffc72c]/60 text-xs font-semibold text-gray-200 transition-all cursor-pointer">
+                <span class="flex items-center gap-2 text-[#ffc72c]">
+                  <i data-lucide="clipboard-check" class="w-4 h-4"></i>
+                  <span>Visualizar Dados Cadastrais & CNPJ</span>
+                </span>
+                <i data-lucide="chevron-down" id="cnpj-accordion-icon" class="w-4 h-4 text-[#ffc72c] transition-transform duration-300"></i>
+              </button>
+
+              <!-- Conteúdo Colapsável (Tabela Dark com Linhas Douradas) -->
+              <div id="cnpj-accordion-content" class="hidden overflow-hidden transition-all duration-300 pt-3">
+                <div class="bg-black/80 rounded-xl p-3.5 border border-[#ffc72c]/30 text-xs space-y-2.5 font-sans">
+                  
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-[#ffc72c]/20 gap-1">
+                    <span class="text-gray-400 font-mono text-[10px] uppercase">CNPJ Oficial</span>
+                    <span class="font-mono font-bold text-[#ffc72c] text-sm">42.277.503/0001-59</span>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-[#ffc72c]/20 gap-1">
+                    <span class="text-gray-400 font-mono text-[10px] uppercase">Razão Social</span>
+                    <span class="font-semibold text-white">G4 Beneficiadora de Batatas Ltda</span>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 border-b border-[#ffc72c]/20 gap-1">
+                    <span class="text-gray-400 font-mono text-[10px] uppercase">Sócios</span>
+                    <span class="text-gray-200 text-[11px]">Rosiane Cezar Souza • Daniela Oliveira • Mauricio da Silva</span>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                    <span class="text-gray-400 font-mono text-[10px] uppercase">Local</span>
+                    <span class="text-emerald-400 font-semibold text-[11px]">Chácara Santa Clara, Cristalina – GO</span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Rodapé do Card: CTA de WhatsApp Direto -->
+          <div class="pt-4 border-t border-white/10">
+            <a href="https://wa.me/5535997132495?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20uma%20cota%C3%A7%C3%A3o%20de%20carreta%20de%20batatas%20com%20a%20G4."
+               target="_blank" rel="noopener noreferrer"
+               class="w-full inline-flex items-center justify-center gap-2.5 px-5 py-3 rounded-xl bg-gradient-to-r from-[#18793b] via-[#22a351] to-[#18793b] hover:from-[#22a351] hover:to-[#18793b] text-white font-heading font-extrabold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(24,121,59,0.4)] hover:shadow-[0_0_25px_rgba(255,199,44,0.5)] transition-all">
+              <span>Solicitar Carreta / Cotação Imediata</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-200 animate-ping"></span>
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+    </div>
+
+    <!-- 3. FAIXA INFERIOR DE IMPACTO E CREDIBILIDADE (Stats Bar) -->
+    <div id="stats-counter-bar" class="clean-glass-card rounded-3xl p-6 sm:p-8 lg:p-10 mt-12 sm:mt-16 border border-emerald-500/25 shadow-2xl relative overflow-hidden">
+      
+      <!-- Ambient light streak -->
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-[#ffc72c]/10 to-emerald-500/5 pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/10 relative z-10">
+        
+        <!-- Counter 1: +100 Toneladas / dia -->
+        <div class="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4">
+          <div class="flex items-baseline gap-1 text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-[#ffc72c]">
+            <span>+</span>
+            <span class="stat-counter" data-target="100">0</span>
+            <span class="text-xl sm:text-2xl font-bold ml-1 text-white">Ton</span>
+          </div>
+          <p class="text-xs uppercase tracking-wider text-gray-200 font-semibold mt-2">Capacidade Operacional</p>
+          <span class="text-[11px] text-emerald-400 font-mono mt-0.5">Por dia de fluxo contínuo</span>
+        </div>
+
+        <!-- Counter 2: 100% Cristalina-GO -->
+        <div class="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 pt-6 sm:pt-0">
+          <div class="flex items-baseline gap-1 text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-[#ffc72c]">
+            <span class="stat-counter" data-target="100">0</span>
+            <span>%</span>
+          </div>
+          <p class="text-xs uppercase tracking-wider text-gray-200 font-semibold mt-2">Cristalina – GO</p>
+          <span class="text-[11px] text-gray-400 font-sans mt-0.5">Solo de maior índice produtivo do país</span>
+        </div>
+
+        <!-- Counter 3: CNPJ Ativo -->
+        <div class="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 pt-6 sm:pt-0">
+          <div class="flex items-center gap-2 text-2xl sm:text-3xl lg:text-4xl font-black font-heading text-emerald-400">
+            <i data-lucide="shield-check" class="w-8 h-8 text-[#ffc72c] animate-pulse"></i>
+            <span>CNPJ ATIVO</span>
+          </div>
+          <p class="text-xs uppercase tracking-wider text-gray-200 font-semibold mt-2">Conformidade Total</p>
+          <span class="text-[11px] text-gray-400 font-sans mt-0.5">Simples Nacional & Rastreabilidade</span>
+        </div>
+
+        <!-- Counter 4: 0% Casca Danificada -->
+        <div class="flex flex-col items-center sm:items-start text-center sm:text-left px-2 sm:px-4 pt-6 sm:pt-0">
+          <div class="flex items-baseline gap-1 text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-[#ffc72c]">
+            <span class="stat-counter-zero">0</span>
+            <span>%</span>
+          </div>
+          <p class="text-xs uppercase tracking-wider text-gray-200 font-semibold mt-2">Casca Danificada</p>
+          <span class="text-[11px] text-emerald-400 font-mono mt-0.5">Lavagem hidrodinâmica suave</span>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SEÇÃO 4: CONTATO & CANAIS OFICIAIS (Rodapé Minimalista)
+       ========================================================================= -->
+  <section id="contato" class="py-24 px-5 sm:px-8 border-t border-white/10 bg-[#060e0a] relative z-20">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-[#f9b000] font-bold block mb-1">
+          Atendimento Direto
+        </span>
+        <h2 class="font-heading text-2xl sm:text-3xl font-extrabold uppercase text-white tracking-tight">
+          Canais Oficiais & Contato
+        </h2>
+        <p class="text-xs text-gray-400 mt-2">
+          Entre em contato diretamente com nossa diretoria comercial e administrativa.
+        </p>
+      </div>
+
+      <!-- Quick Contact Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <!-- Phone 1 -->
+        <div class="contact-card clean-glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <i data-lucide="phone-call" class="w-5 h-5 text-emerald-400 mb-3"></i>
+            <span class="text-[10px] text-gray-400 uppercase font-mono block">Telefone 01</span>
+            <p class="font-heading font-bold text-base text-white mt-1">(35) 99713-2495</p>
+          </div>
+          <a href="https://wa.me/5535997132495" target="_blank" rel="noopener noreferrer" class="mt-4 text-xs font-semibold text-[#25D366] hover:underline flex items-center gap-1">
+            <span>Conversar no WhatsApp</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Phone 2 -->
+        <div class="contact-card clean-glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <i data-lucide="phone-call" class="w-5 h-5 text-emerald-400 mb-3"></i>
+            <span class="text-[10px] text-gray-400 uppercase font-mono block">Telefone 02</span>
+            <p class="font-heading font-bold text-base text-white mt-1">(35) 99844-5100</p>
+          </div>
+          <a href="https://wa.me/5535998445100" target="_blank" rel="noopener noreferrer" class="mt-4 text-xs font-semibold text-[#25D366] hover:underline flex items-center gap-1">
+            <span>Conversar no WhatsApp</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Email -->
+        <div class="contact-card clean-glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <i data-lucide="mail" class="w-5 h-5 text-[#f9b000] mb-3"></i>
+            <span class="text-[10px] text-gray-400 uppercase font-mono block">E-mail Comercial</span>
+            <p class="font-heading font-bold text-sm text-white mt-1 break-all">osmeninosdabatata@gmail.com</p>
+          </div>
+          <a href="mailto:osmeninosdabatata@gmail.com" class="mt-4 text-xs font-semibold text-[#f9b000] hover:underline flex items-center gap-1">
+            <span>Enviar Mensagem</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- CNPJ Oficial -->
+        <div class="contact-card clean-glass-card p-6 rounded-2xl flex flex-col justify-between">
+          <div>
+            <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400 mb-3"></i>
+            <span class="text-[10px] text-gray-400 uppercase font-mono block">CNPJ Oficial</span>
+            <p class="font-heading font-bold text-sm text-white mt-1 font-mono">42.277.503/0001-59</p>
+          </div>
+          <button id="copy-cnpj-btn" class="mt-4 text-xs font-semibold text-gray-300 hover:text-white flex items-center gap-1.5 focus:outline-none">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+            <span>Copiar CNPJ</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Minimalist Bottom Bar -->
+      <footer class="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo-badge-transparent.png" alt="G4 Logo" class="w-6 h-6 object-contain">
+          <span>G4 Beneficiadora de Batatas Ltda &bull; Cristalina – GO</span>
+        </div>
+        <p>&copy; 2026 G4 Batatas. Todos os direitos reservados.</p>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- FLOATING WHATSAPP CTA -->
+  <a href="https://wa.me/5535997132495"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="whatsapp-float group focus:outline-none"
+     aria-label="Falar no WhatsApp Oficial">
+    <i data-lucide="message-circle" class="w-5 h-5"></i>
+    <span class="font-bold">WhatsApp Oficial</span>
+  </a>
+
+  <!-- =========================================================================
+       MODAIS INTERATIVOS DA G4 BATATAS (Pós-Colheita, Plantio & Galpão)
+       ========================================================================= -->
+
+  <!-- MODAL: DETALHES DO PLANTIO & MANEJO AGRÍCOLA (Card 1) -->
+  <div id="modal-planting" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-planting-title">
+    <div class="clean-glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border border-emerald-500/30 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+      <button type="button" class="btn-close-modal absolute top-5 right-5 p-2 text-gray-400 hover:text-white rounded-full bg-white/5 hover:bg-white/10 transition-colors focus:outline-none" aria-label="Fechar modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      
+      <div class="flex items-center gap-2.5 text-xs font-bold font-mono text-[#ffc72c] uppercase tracking-wider mb-2">
+        <i data-lucide="sprout" class="w-4 h-4 text-emerald-400"></i>
+        <span>Fase 01 • Caderno Técnico de Lavoura</span>
+      </div>
+      
+      <h3 id="modal-planting-title" class="font-heading font-extrabold text-2xl sm:text-3xl text-white uppercase mb-4">
+        Manejo Agronômico & Solo de Cristalina
+      </h3>
+      
+      <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6 font-sans">
+        O polo agrícola de Cristalina (GO) destaca-se nacionalmente pela combinação de altitude elevada (1.180m a 1.250m), noites amenas e solo latossolo vermelho profundo. A G4 Batatas atua com protocolos rigorosos de pós-colheita sincronizados diretamente com a colheita no campo.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs mb-6">
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/5">
+          <span class="text-emerald-400 font-mono font-bold block mb-1">01. Correção e Mineralização</span>
+          <p class="text-gray-300">Calagem e gessagem estruturadas para neutralização de alumínio e aprofundamento radicular dos tubérculos.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/5">
+          <span class="text-emerald-400 font-mono font-bold block mb-1">02. Irrigação Computadorizada</span>
+          <p class="text-gray-300">Pivôs centrais com monitoramento por tensiômetros e lâmina d'água precisa durante todo o ciclo.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/5">
+          <span class="text-emerald-400 font-mono font-bold block mb-1">03. Sanidade Fitossanitária</span>
+          <p class="text-gray-300">Acompanhamento diário in loco por engenheiros agrônomos, garantindo 99.4% de sanidade e integridade.</p>
+        </div>
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/5">
+          <span class="text-emerald-400 font-mono font-bold block mb-1">04. Maturação & Colheita</span>
+          <p class="text-gray-300">Teste de resistência de casca e aferição de matéria seca antes da liberação das colheitadeiras mecânicas.</p>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 flex items-center justify-between flex-wrap gap-3">
+        <span class="text-xs text-gray-400 font-mono">Cristalina – GO • CNAE 0161-0/03</span>
+        <button type="button" class="btn-close-modal btn-minimal-gold py-2 px-5 text-xs">
+          <span>Entendido / Voltar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: GALPÃO VIRTUAL & PROCESSO DE LAVAGEM (Card 2) -->
+  <div id="modal-galpao" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-galpao-title">
+    <div class="clean-glass-card max-w-3xl w-full rounded-3xl p-6 sm:p-8 border border-emerald-500/30 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+      <button type="button" class="btn-close-modal absolute top-5 right-5 p-2 text-gray-400 hover:text-white rounded-full bg-white/5 hover:bg-white/10 transition-colors focus:outline-none" aria-label="Fechar modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      
+      <div class="flex items-center gap-2.5 text-xs font-bold font-mono text-[#ffc72c] uppercase tracking-wider mb-2">
+        <i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i>
+        <span>Fase 02 • Visita Técnica ao Galpão</span>
+      </div>
+      
+      <h3 id="modal-galpao-title" class="font-heading font-extrabold text-2xl sm:text-3xl text-white uppercase mb-4">
+        Infraestrutura Industrial de Beneficiamento
+      </h3>
+
+      <!-- Galpão Photo Gallery Split -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div class="rounded-2xl overflow-hidden border border-white/10 relative h-48 bg-black/60">
+          <img src="assets/galpao-lavagem-clean.jpg" alt="Tanques de Lavagem G4" class="w-full h-full object-cover">
+          <span class="absolute bottom-2 left-2 bg-black/80 px-2.5 py-1 rounded text-[10px] font-mono text-emerald-300">Tanques de Lavagem Contínua</span>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10 relative h-48 bg-black/60">
+          <img src="assets/galpao-selecao-clean.jpg" alt="Esteiras de Seleção Técnica" class="w-full h-full object-cover">
+          <span class="absolute bottom-2 left-2 bg-black/80 px-2.5 py-1 rounded text-[10px] font-mono text-[#ffc72c]">Esteiras de Classificação</span>
+        </div>
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm text-gray-300 mb-6 font-sans">
+        <p class="leading-relaxed">
+          Nossa unidade de beneficiamento na <strong class="text-white">Chácara Santa Clara em Cristalina</strong> conta com maquinário industrial próprio, circuito fechado de água tratada e capacidade de processamento contínuo superior a <strong class="text-[#ffc72c]">+100 toneladas/dia</strong>.
+        </p>
+        <ul class="space-y-2 text-xs text-gray-300 font-sans pl-1">
+          <li class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+            <span>Desarenamento suave por turbilhonamento sem colisão mecânica.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+            <span>Água limpa e tratada em fluxo contínuo para brilho e sanitização da casca.</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+            <span>Triagem visual e mecânica sob bancadas hiperiluminadas.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 flex items-center justify-between flex-wrap gap-3">
+        <a href="https://wa.me/5535997132495?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20visita%20ao%20galp%C3%A3o%20da%20G4%20Batatas."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-minimal-gold py-2 px-5 text-xs">
+          <span>Agendar Visita Comercial</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+        <button type="button" class="btn-close-modal text-xs text-gray-400 hover:text-white px-3 py-2 cursor-pointer">
+          Fechar Janela
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-notice" class="toast-notice" role="alert">
+    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-text">CNPJ copiado com sucesso!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
