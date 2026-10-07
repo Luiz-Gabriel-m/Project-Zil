@@ -73,19 +73,22 @@
   <header class="fixed top-0 left-0 right-0 z-50 glass-nav-navy transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
-      <!-- Brasão Oficial de Toledo-MG + Nome -->
-      <a href="#hero" class="flex items-center space-x-3.5 group">
+      <!-- Brasão Oficial de Toledo-MG + Nome Clicável com Link Oficial -->
+      <a href="C:/Users/luiz.moraes/Desktop/projetoszil/zildo/index.html" target="_blank" rel="noopener noreferrer"
+        class="flex items-center space-x-3 sm:space-x-3.5 group hover:opacity-80 transition-opacity"
+        title="Portal Oficial de Toledo-MG • Habitação e Serviços">
         <div
-          class="h-12 w-auto flex items-center justify-center p-0.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-tucano/40 transition-colors">
+          class="h-11 sm:h-12 w-auto flex items-center justify-center p-0.5 rounded-lg bg-white/5 border border-white/10 group-hover:border-tucano/50 transition-colors">
           <img src="./assets/images/brasao-toledo.png" alt="Brasão Oficial de Toledo - MG"
-            class="h-10 w-auto object-contain">
+            class="h-9 sm:h-10 w-auto object-contain">
         </div>
         <div class="flex flex-col">
           <span
-            class="font-heading font-black tracking-tight text-base sm:text-lg text-white uppercase group-hover:text-tucano transition-colors">
+            class="font-heading font-black tracking-tight text-base sm:text-lg text-white uppercase group-hover:text-tucano transition-colors leading-tight">
             ZILDO OLIVEIRA
           </span>
-          <span class="text-[10px] tracking-widest uppercase font-bold text-tucano flex items-center gap-1.5">
+          <span
+            class="text-[10px] sm:text-[11px] tracking-widest uppercase font-bold text-tucano flex items-center gap-1.5 mt-0.5">
             <span class="w-1.5 h-1.5 rounded-full bg-tucano animate-pulse"></span>
             Prefeito de Toledo • MG
           </span>
@@ -95,14 +98,14 @@
       <!-- Menu Central em Caixa Alta -->
       <nav
         class="hidden md:flex items-center space-x-8 text-xs font-heading font-bold uppercase tracking-widest text-slate-300">
+        <a href="#carta-aberta" class="hover:text-white transition-colors duration-200 py-1">Amor por Toledo</a>
         <a href="#historia" class="hover:text-white transition-colors duration-200 py-1">Nossa História</a>
-        <a href="#realizacoes" class="hover:text-white transition-colors duration-200 py-1">Habitação e Obras</a>
-        <a href="#projetos"
+        <a href="#realizacoes"
           class="hover:text-tucano transition-colors duration-200 py-1 text-slate-200 flex items-center gap-1.5">
-          <span>Projetos em Andamento</span>
+          <span>Cuidado com o Povo</span>
           <span class="w-1.5 h-1.5 rounded-full bg-tucano animate-pulse"></span>
         </a>
-        <a href="#comunidade" class="hover:text-white transition-colors duration-200 py-1">Cuidado com o Povo</a>
+        <a href="#projetos" class="hover:text-white transition-colors duration-200 py-1">Projetos em Andamento</a>
       </nav>
 
       <!-- Botão Amarelo Tucano à Direita [ CANAL OFICIAL ] & Redes -->
@@ -156,10 +159,11 @@
       <a href="#carta-aberta" class="mobile-link hover:text-tucano transition-colors">Amor por Toledo</a>
       <a href="#nossa-cidade" class="mobile-link text-tucano transition-colors">Nossa Cidade</a>
       <a href="#historia" class="mobile-link hover:text-tucano transition-colors">Nossa História</a>
-      <a href="#realizacoes" class="mobile-link hover:text-tucano transition-colors">Habitação e Obras</a>
-      <a href="#projetos" class="mobile-link hover:text-tucano transition-colors flex items-center gap-2">Projetos em
-        Andamento <span class="w-1.5 h-1.5 rounded-full bg-tucano animate-pulse"></span></a>
-      <a href="#comunidade" class="mobile-link hover:text-tucano transition-colors">Cuidado com o Povo</a>
+      <a href="#realizacoes" class="mobile-link hover:text-tucano transition-colors flex items-center gap-2">
+        <span>Cuidado com o Povo & Realizações</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-tucano animate-pulse"></span>
+      </a>
+      <a href="#projetos" class="mobile-link hover:text-tucano transition-colors">Projetos em Andamento</a>
     </div>
     <div class="pt-8">
       <button
@@ -220,16 +224,17 @@
               cada cidadão de Toledo-MG.
             </p>
 
-            <!-- CTA / BOTÕES DE AÇÃO -->
-            <div id="hero-cta" class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <!-- CTA / BOTÕES DE AÇÃO COM 48PX MIN-HEIGHT PARA MOBILE (320px - 424px) -->
+            <div id="hero-cta"
+              class="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <a href="#carta-aberta"
-                class="px-7 sm:px-8 py-3.5 rounded-full bg-tucano hover:bg-tucano-hover text-black text-xs font-heading font-black tracking-widest uppercase shadow-xl shadow-tucano/25 hover:shadow-tucano/40 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                class="min-h-[48px] w-full sm:w-auto px-7 sm:px-8 py-3.5 rounded-full bg-tucano hover:bg-tucano-hover text-black text-xs font-heading font-black tracking-widest uppercase shadow-xl shadow-tucano/25 hover:shadow-tucano/40 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
                 <span>Fique por Dentro</span>
                 <i data-lucide="arrow-down" class="w-3.5 h-3.5 stroke-[2.5]"></i>
               </a>
 
               <a href="#realizacoes"
-                class="px-7 sm:px-8 py-3.5 rounded-full bg-navy-surface/80 hover:bg-navy-surface text-white hover:text-tucano text-xs font-heading font-black tracking-widest uppercase border border-white/20 hover:border-tucano shadow-xl transition-all transform hover:-translate-y-0.5 backdrop-blur-md flex items-center gap-2">
+                class="min-h-[48px] w-full sm:w-auto px-7 sm:px-8 py-3.5 rounded-full bg-navy-surface/80 hover:bg-navy-surface text-white hover:text-tucano text-xs font-heading font-black tracking-widest uppercase border border-white/20 hover:border-tucano shadow-xl transition-all transform hover:-translate-y-0.5 backdrop-blur-md flex items-center justify-center gap-2">
                 <span>Conheça as Propostas</span>
               </a>
             </div>
@@ -542,116 +547,196 @@
     </section>
 
     <!-- ==========================================================================
-         SEÇÃO 5: REALIZAÇÕES DA GESTÃO (O QUE JÁ FOI ENTREGUE)
+         SEÇÃO 5 UNIFICADA: CUIDADO COM O POVO & TRABALHO QUE TRANSFORMA
          ========================================================================== -->
-    <section id="realizacoes" class="relative py-28 bg-navy-dark overflow-hidden border-t border-white/5">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="realizacoes" class="relative py-20 sm:py-32 bg-navy-dark overflow-hidden border-t border-white/5">
+      <!-- Glows sutis de iluminação ambiental -->
+      <div class="glow-navy-spot -left-40 top-1/4 opacity-35"></div>
+      <div class="glow-tucano-spot -right-40 bottom-1/4 opacity-15"></div>
 
-        <div class="mb-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <!-- Cabeçalho da Seção Unificada -->
+        <div class="max-w-4xl mb-10 sm:mb-14">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-8 h-0.5 bg-tucano"></div>
-            <span class="font-heading font-black text-xs uppercase tracking-widest text-tucano">Entregas
-              Comprovadas</span>
+            <span class="font-heading font-black text-xs uppercase tracking-widest text-tucano">Gestão Participativa &
+              Realizações</span>
           </div>
-          <h2 class="font-heading font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
-            Realizações da Gestão: <br>
-            <span class="text-slate-400">Trabalho que Mudou a Vida do Nosso Povo</span>
+          <h2
+            class="font-heading font-black text-2xl sm:text-4xl md:text-5xl text-white uppercase tracking-tight leading-[1.08]">
+            CUIDADO COM O POVO: <br class="hidden sm:inline">
+            <span class="text-tucano">TRABALHO QUE TRANSFORMA A VIDA DA NOSSA GENTE</span>
           </h2>
+          <p class="mt-4 text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+            Política se faz com presença, ouvindo cada bairro e garantindo dignidade para as famílias de Toledo-MG.
+          </p>
         </div>
 
-        <!-- Grid de Cards em Azul Nobre com Acentos Amarelo Tucano -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Frame Estilo Apple Studio Display / Mockup Monitor -->
+        <div
+          class="realizacoes-monitor-frame p-3.5 sm:p-7 md:p-8 lg:p-10 rounded-2xl sm:rounded-[36px] bg-[#07101E]/95 border border-white/10 shadow-2xl backdrop-blur-md">
 
-          <!-- Card 1: Habitação para Quem Precisa -->
-          <div class="card-navy-nobel p-8 rounded-2xl flex flex-col justify-between border-t-2 border-t-tucano">
-            <div>
+          <!-- GRID DE CARDS RESPONSIVO (1 Grande à esquerda + 4 Menores em 2x2 à direita, empilhado no mobile) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 lg:gap-6 items-stretch">
+
+            <!-- ==========================================
+                 CARD 1: GESTÃO PARTICIPATIVA (Card Principal Grande)
+                 ========================================== -->
+            <div
+              class="lg:col-span-6 realizacao-card group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 hover:border-tucano/60 transition-all duration-500 shadow-xl flex flex-col justify-end min-h-[320px] sm:min-h-[440px] lg:min-h-[500px]">
+              <!-- Imagem de Fundo HD Limpa -->
+              <img src="./assets/images/hd-card-plano-diretor.jpg"
+                alt="Zildinho plantando árvore com a comunidade e moradores"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="lazy">
+              <!-- Overlay Gradiente Escuro Opaque para zero ghosting -->
               <div
-                class="w-12 h-12 rounded-xl bg-tucano/10 border border-tucano/30 flex items-center justify-center text-tucano mb-6">
-                <i data-lucide="home" class="w-6 h-6"></i>
+                class="absolute inset-0 bg-gradient-to-t from-[#07101E] via-[#07101E]/95 to-transparent pointer-events-none">
               </div>
-              <span class="text-[10px] font-heading font-black uppercase tracking-widest text-tucano">Moradia
-                Digna</span>
-              <h3 class="font-heading font-black text-xl text-white uppercase mt-1 mb-3">Habitação para Quem Precisa
-              </h3>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-                O maior programa de moradias populares e regularização fundiária da história de Toledo. Casas entregues
-                com dignidade, água encanada e infraestrutura completa.
-              </p>
+
+              <!-- Conteúdo do Card -->
+              <div class="relative z-10 p-5 sm:p-7 lg:p-8">
+                <span
+                  class="inline-flex items-center px-3 py-1 rounded-md bg-tucano text-black font-heading font-black text-[10px] sm:text-[11px] uppercase tracking-wider shadow-md mb-2 sm:mb-3">
+                  GESTÃO PARTICIPATIVA
+                </span>
+                <h3
+                  class="font-heading font-black text-xl sm:text-2xl lg:text-3xl text-white uppercase tracking-tight leading-snug">
+                  Plano Diretor com a Comunidade
+                </h3>
+                <p class="text-slate-300 text-xs sm:text-sm mt-1 sm:mt-1.5 font-normal">
+                  Construindo o futuro de Toledo, juntos.
+                </p>
+              </div>
             </div>
 
-            <div class="pt-6 border-t border-white/5">
-              <div class="flex items-baseline justify-between mb-4">
-                <span class="font-heading font-black text-4xl text-white stat-tucano-number" data-target="350"
-                  data-prefix="+" data-suffix="">+350</span>
-                <span class="text-[10px] font-heading font-bold uppercase tracking-wider text-slate-400">Famílias
-                  Beneficiadas</span>
+            <!-- ==========================================
+                 COLUNA DIREITA (GRID 2x2 CARDS)
+                 ========================================== -->
+            <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
+
+              <!-- CARD 2: DEMOCRACIA DIRETA -->
+              <div
+                class="realizacao-card group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 hover:border-tucano/60 transition-all duration-500 shadow-xl flex flex-col justify-end min-h-[200px] sm:min-h-[240px]">
+                <img src="./assets/images/hd-card-democracia-direta.jpg"
+                  alt="Reunião e Assembleia de bairro com a população"
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#07101E] via-[#07101E]/95 to-transparent pointer-events-none">
+                </div>
+                <div class="relative z-10 p-4 sm:p-5">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-md bg-tucano text-black font-heading font-black text-[9px] sm:text-[10px] uppercase tracking-wider shadow-md mb-1.5 sm:mb-2">
+                    DEMOCRACIA DIRETA
+                  </span>
+                  <h4
+                    class="font-heading font-black text-base sm:text-lg text-white uppercase tracking-tight leading-tight">
+                    Ouvindo Cada Família
+                  </h4>
+                  <p class="text-slate-300 text-[11px] sm:text-xs mt-1 font-normal">
+                    Assembleias de bairro em andamento.
+                  </p>
+                </div>
               </div>
-              <a href="https://habitacao.toledo.mg.gov.br" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center justify-between w-full text-xs font-heading font-bold text-tucano hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-3.5 py-2.5 rounded-lg border border-white/5">
-                <span>habitacao.toledo.mg.gov.br</span>
-                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-              </a>
+
+              <!-- CARD 3: OBRAS PRIORITÁRIAS -->
+              <div
+                class="realizacao-card group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 hover:border-tucano/60 transition-all duration-500 shadow-xl flex flex-col justify-end min-h-[200px] sm:min-h-[240px]">
+                <img src="./assets/images/hd-card-unidade-saude.jpg" alt="Fachada da nova unidade de saúde de Toledo-MG"
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#07101E] via-[#07101E]/95 to-transparent pointer-events-none">
+                </div>
+                <div class="relative z-10 p-4 sm:p-5">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-md bg-tucano text-black font-heading font-black text-[9px] sm:text-[10px] uppercase tracking-wider shadow-md mb-1.5 sm:mb-2">
+                    OBRAS PRIORITÁRIAS
+                  </span>
+                  <h4
+                    class="font-heading font-black text-base sm:text-lg text-white uppercase tracking-tight leading-tight">
+                    Nova Unidade de Saúde
+                  </h4>
+                  <p class="text-slate-300 text-[11px] sm:text-xs mt-1 font-normal">
+                    Atendimento descentralizado e moderno.
+                  </p>
+                </div>
+              </div>
+
+              <!-- CARD 4: DESENVOLVIMENTO -->
+              <div
+                class="realizacao-card group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 hover:border-tucano/60 transition-all duration-500 shadow-xl flex flex-col justify-end min-h-[200px] sm:min-h-[240px]">
+                <img src="./assets/images/hd-card-canteiro-obras.jpg"
+                  alt="Engenheiro e trabalhador no canteiro de obras de pavimentação"
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#07101E] via-[#07101E]/95 to-transparent pointer-events-none">
+                </div>
+                <div class="relative z-10 p-4 sm:p-5">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-md bg-tucano text-black font-heading font-black text-[9px] sm:text-[10px] uppercase tracking-wider shadow-md mb-1.5 sm:mb-2">
+                    DESENVOLVIMENTO
+                  </span>
+                  <h4
+                    class="font-heading font-black text-base sm:text-lg text-white uppercase tracking-tight leading-tight">
+                    Canteiro de Obras
+                  </h4>
+                  <p class="text-slate-300 text-[11px] sm:text-xs mt-1 font-normal">
+                    Zildinho acompanha cada detalhe.
+                  </p>
+                </div>
+              </div>
+
+              <!-- CARD 5: DIGNIDADE -->
+              <div
+                class="realizacao-card group relative rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 hover:border-tucano/60 transition-all duration-500 shadow-xl flex flex-col justify-end min-h-[200px] sm:min-h-[240px]">
+                <img src="./assets/images/hd-card-acao-social.jpg"
+                  alt="Zildinho entregando as chaves da casa própria para uma família de Toledo-MG"
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy">
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#07101E] via-[#07101E]/95 to-transparent pointer-events-none">
+                </div>
+                <div class="relative z-10 p-4 sm:p-5">
+                  <span
+                    class="inline-flex items-center px-2.5 py-0.5 rounded-md bg-tucano text-black font-heading font-black text-[9px] sm:text-[10px] uppercase tracking-wider shadow-md mb-1.5 sm:mb-2">
+                    DIGNIDADE
+                  </span>
+                  <h4
+                    class="font-heading font-black text-base sm:text-lg text-white uppercase tracking-tight leading-tight">
+                    Ação Social & Habitação
+                  </h4>
+                  <p class="text-slate-300 text-[11px] sm:text-xs mt-1 font-normal">
+                    Apoio direto e moradia digna para as famílias.
+                  </p>
+                </div>
+              </div>
+
             </div>
+
           </div>
 
-          <!-- Card 2: Infraestrutura e Obras -->
-          <div class="card-navy-nobel p-8 rounded-2xl flex flex-col justify-between border-t-2 border-t-tucano">
-            <div>
-              <div
-                class="w-12 h-12 rounded-xl bg-tucano/10 border border-tucano/30 flex items-center justify-center text-tucano mb-6">
-                <i data-lucide="hammer" class="w-6 h-6"></i>
-              </div>
-              <span class="text-[10px] font-heading font-black uppercase tracking-widest text-tucano">Cidade Bem
-                Cuidada</span>
-              <h3 class="font-heading font-black text-xl text-white uppercase mt-1 mb-3">Infraestrutura e Obras</h3>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-                Pavimentação asfáltica de qualidade nos bairros, reformas de pontes na zona rural e conversão de 100% da
-                iluminação pública para lâmpadas LED econômicas.
-              </p>
-            </div>
+          <!-- ==========================================
+               BARRA INFERIOR DE BOTÕES ESTILO PÍLULA (ÚNICA NO SITE - SEM DUPLICIDADE)
+               ========================================== -->
+          <div
+            class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+            <!-- Botão Amarelo Principal -->
+            <a href="https://www.instagram.com/zildinhooliveira" target="_blank" rel="noopener noreferrer"
+              class="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2.5 px-7 sm:px-9 py-3.5 sm:py-4 rounded-full bg-tucano hover:bg-tucano-hover text-black font-heading font-black text-xs sm:text-sm uppercase tracking-widest shadow-xl shadow-tucano/25 hover:shadow-tucano/40 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+              <i data-lucide="instagram" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+              <span>ACOMPANHE NO INSTAGRAM</span>
+            </a>
 
-            <div class="pt-6 border-t border-white/5">
-              <div class="flex items-baseline justify-between mb-4">
-                <span class="font-heading font-black text-4xl text-white stat-tucano-number" data-target="48"
-                  data-prefix="+" data-suffix=" km">+48 km</span>
-                <span class="text-[10px] font-heading font-bold uppercase tracking-wider text-slate-400">Vias
-                  Recuperadas</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-tucano"></i>
-                <span>100% iluminação em LED no município</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3: Cuidado com as Pessoas -->
-          <div class="card-navy-nobel p-8 rounded-2xl flex flex-col justify-between border-t-2 border-t-tucano">
-            <div>
-              <div
-                class="w-12 h-12 rounded-xl bg-tucano/10 border border-tucano/30 flex items-center justify-center text-tucano mb-6">
-                <i data-lucide="heart" class="w-6 h-6"></i>
-              </div>
-              <span class="text-[10px] font-heading font-black uppercase tracking-widest text-tucano">Saúde e
-                Acolhimento</span>
-              <h3 class="font-heading font-black text-xl text-white uppercase mt-1 mb-3">Cuidado com as Pessoas</h3>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-                Atendimento humanizado na saúde, remédio garantido no posto, transporte de pacientes com respeito e
-                apoio incondicional aos pequenos comerciantes e produtores rurais.
-              </p>
-            </div>
-
-            <div class="pt-6 border-t border-white/5">
-              <div class="flex items-baseline justify-between mb-4">
-                <span class="font-heading font-black text-4xl text-white stat-tucano-number" data-target="1400"
-                  data-prefix="+" data-suffix="">+1.400</span>
-                <span class="text-[10px] font-heading font-bold uppercase tracking-wider text-slate-400">Oportunidades &
-                  Renda</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
-                <i data-lucide="check" class="w-3.5 h-3.5 text-tucano"></i>
-                <span>Apoio total à saúde e bem-estar das famílias</span>
-              </div>
-            </div>
+            <!-- Botão Secundário Escuro com Borda -->
+            <button
+              class="open-official-channel w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2.5 px-7 sm:px-9 py-3.5 sm:py-4 rounded-full bg-[#0F2444]/90 hover:bg-[#132D54] text-white font-heading font-black text-xs sm:text-sm uppercase tracking-widest border border-white/20 hover:border-tucano/60 shadow-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+              <i data-lucide="message-circle" class="w-4 h-4 sm:w-5 sm:h-5 text-tucano"></i>
+              <span>ENVIE SUA MENSAGEM</span>
+            </button>
           </div>
 
         </div>
@@ -966,127 +1051,6 @@
 
       </div>
     </section>
-
-    <!-- ==========================================================================
-         SEÇÃO 7: GALERIA DO POVO & PRESENÇA COMUNITÁRIA
-         ========================================================================== -->
-    <section id="comunidade" class="relative py-28 sm:py-36 bg-navy-dark overflow-hidden border-t border-white/5">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="mb-14">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-0.5 bg-tucano"></div>
-            <span class="font-heading font-black text-xs uppercase tracking-widest text-tucano">Galeria do Povo</span>
-          </div>
-          <h2 class="font-heading font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">
-            Cuidado com o Povo: <br>
-            <span class="text-slate-400">Zildinho ao Lado de Quem Faz Toledo</span>
-          </h2>
-          <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed">
-            Política se faz com presença. Nos bairros, nos canteiros de obras, nos eventos e nas visitas — Zildinho está
-            sempre ouvindo e cuidando do povo de Toledo.
-          </p>
-        </div>
-
-        <!-- Mural de Fotos: Layout Bento Grid -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 auto-rows-[180px] sm:auto-rows-[220px]">
-
-          <!-- Foto 1: Grande - Vitória e Festa Popular -->
-          <div class="gallery-card card-navy-nobel rounded-2xl overflow-hidden group relative col-span-2 row-span-2">
-            <img src="./assets/images/hero-crowd.jpg" alt="Zildo levantado pelo povo de Toledo"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500">
-            </div>
-            <div class="absolute bottom-5 left-5 right-5">
-              <span
-                class="text-[10px] font-heading font-black uppercase tracking-wider text-tucano bg-black/60 px-2.5 py-1 rounded-md backdrop-blur-sm">Aprovação
-                Popular</span>
-              <div class="font-heading font-bold text-white text-base sm:text-lg mt-2 leading-tight">O Carinho e a
-                Confiança do Povo de Toledo</div>
-              <p class="text-[11px] text-slate-300 mt-1 hidden sm:block">Uma gestão construída de mãos dadas com a
-                comunidade.</p>
-            </div>
-          </div>
-
-          <!-- Foto 2: Diálogo e Proximidade -->
-          <div class="gallery-card card-navy-nobel rounded-2xl overflow-hidden group relative col-span-1 row-span-1">
-            <img src="./assets/images/hero-close.jpg" alt="Zildo conversando com a população"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500">
-            </div>
-            <div class="absolute bottom-3 left-3 right-3">
-              <span
-                class="text-[9px] font-heading font-black uppercase tracking-wider text-tucano bg-black/60 px-2 py-0.5 rounded">Gabinete
-                nas Ruas</span>
-              <div class="font-heading font-bold text-white text-xs sm:text-sm mt-1">Ouvindo Cada Família</div>
-            </div>
-          </div>
-
-          <!-- Foto 3: Praça da Cidade -->
-          <div class="gallery-card card-navy-nobel rounded-2xl overflow-hidden group relative col-span-1 row-span-1">
-            <img src="./assets/images/toledo-cidade-praca.png" alt="Praça Coronel Olinto e Igreja de Toledo-MG"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500">
-            </div>
-            <div class="absolute bottom-3 left-3 right-3">
-              <span
-                class="text-[9px] font-heading font-black uppercase tracking-wider text-tucano bg-black/60 px-2 py-0.5 rounded">Nossa
-                Casa</span>
-              <div class="font-heading font-bold text-white text-xs sm:text-sm mt-1">Praça Coronel Olinto</div>
-            </div>
-          </div>
-
-          <!-- Foto 4: Obra e Canteiro -->
-          <div class="gallery-card card-navy-nobel rounded-2xl overflow-hidden group relative col-span-1 row-span-1">
-            <div
-              class="w-full h-full bg-gradient-to-br from-navy-surface to-navy-card flex items-center justify-center">
-              <div class="text-center p-4">
-                <div
-                  class="w-12 h-12 rounded-full bg-tucano/15 border border-tucano/30 flex items-center justify-center text-tucano mx-auto mb-3">
-                  <i data-lucide="hard-hat" class="w-6 h-6"></i>
-                </div>
-                <div class="font-heading font-black text-sm text-white uppercase">Canteiro de Obras</div>
-                <div class="text-[10px] text-slate-400 mt-1">Zildinho acompanha cada detalhe</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Foto 5: Visita Comunitária -->
-          <div class="gallery-card card-navy-nobel rounded-2xl overflow-hidden group relative col-span-1 row-span-1">
-            <div
-              class="w-full h-full bg-gradient-to-br from-navy-surface to-navy-card flex items-center justify-center">
-              <div class="text-center p-4">
-                <div
-                  class="w-12 h-12 rounded-full bg-tucano/15 border border-tucano/30 flex items-center justify-center text-tucano mx-auto mb-3">
-                  <i data-lucide="hand-heart" class="w-6 h-6"></i>
-                </div>
-                <div class="font-heading font-black text-sm text-white uppercase">Ação Social</div>
-                <div class="text-[10px] text-slate-400 mt-1">Apoio direto às famílias</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Call-to-Action da Galeria -->
-        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="https://instagram.com/zildinhooliveira" target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-tucano hover:bg-tucano-hover text-black font-heading font-black text-xs uppercase tracking-widest shadow-lg shadow-tucano/20 hover:shadow-tucano/40 transition-all transform hover:-translate-y-0.5">
-            <i data-lucide="instagram" class="w-4 h-4"></i>
-            <span>Acompanhe no Instagram</span>
-          </a>
-          <button
-            class="open-official-channel inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white/5 hover:bg-white/10 text-white font-heading font-black text-xs uppercase tracking-widest border border-white/15 hover:border-tucano/50 transition-all transform hover:-translate-y-0.5 backdrop-blur-md">
-            <i data-lucide="message-circle" class="w-4 h-4"></i>
-            <span>Envie Sua Mensagem</span>
-          </button>
-        </div>
-
-      </div>
-    </section>
   </main>
 
   <!-- ==========================================================================
@@ -1099,35 +1063,38 @@
 
         <!-- Coluna Identidade e Brasão -->
         <div class="md:col-span-5">
-          <div class="flex items-center gap-3.5 mb-4">
+          <a href="https://habitacao.toledo.mg.gov.br" target="_blank" rel="noopener noreferrer"
+            class="flex items-center gap-3.5 mb-4 group hover:opacity-80 transition-opacity"
+            title="Portal Oficial de Toledo-MG">
             <img src="./assets/images/brasao-toledo.png" alt="Brasão de Toledo - MG" class="h-14 w-auto object-contain">
             <div class="flex flex-col">
-              <span class="font-heading font-black text-lg text-white uppercase tracking-tight">Prefeitura de Toledo -
-                MG</span>
+              <span
+                class="font-heading font-black text-lg text-white uppercase tracking-tight group-hover:text-tucano transition-colors">Prefeitura
+                de Toledo - MG</span>
               <span class="text-xs text-tucano font-bold uppercase tracking-wider">Gestão Zildo Oliveira</span>
             </div>
-          </div>
+          </a>
           <p class="text-xs text-slate-300 leading-relaxed max-w-sm mb-6">
             Compromisso com o trabalho sério, o respeito ao cidadão e a valorização contínua de cada família toledense.
           </p>
           <div class="flex items-center space-x-3 text-slate-300">
             <a href="https://instagram.com/zildinhooliveira" target="_blank" rel="noopener noreferrer"
-              class="w-9 h-9 rounded-lg bg-white/5 hover:bg-tucano hover:text-black flex items-center justify-center transition-all border border-white/10"
+              class="w-10 h-10 rounded-lg bg-white/5 hover:bg-tucano hover:text-black flex items-center justify-center transition-all border border-white/10"
               aria-label="Instagram">
               <i data-lucide="instagram" class="w-4 h-4"></i>
             </a>
             <a href="#"
-              class="w-9 h-9 rounded-lg bg-white/5 hover:bg-tucano hover:text-black flex items-center justify-center transition-all border border-white/10"
+              class="w-10 h-10 rounded-lg bg-white/5 hover:bg-tucano hover:text-black flex items-center justify-center transition-all border border-white/10"
               aria-label="Twitter">
               <i data-lucide="twitter" class="w-4 h-4"></i>
             </a>
             <a href="#"
-              class="w-9 h-9 rounded-lg bg-white/5 hover:bg-tucano hover:text-black flex items-center justify-center transition-all border border-white/10"
+              class="w-10 h-10 rounded-lg bg-white/5 hover:bg-tucano hover:text-black flex items-center justify-center transition-all border border-white/10"
               aria-label="YouTube">
               <i data-lucide="youtube" class="w-4 h-4"></i>
             </a>
             <a href="#"
-              class="w-9 h-9 rounded-lg bg-white/5 hover:bg-tucano hover:text-black flex items-center justify-center transition-all border border-white/10"
+              class="open-official-channel w-10 h-10 rounded-lg bg-white/5 hover:bg-tucano hover:text-black flex items-center justify-center transition-all border border-white/10"
               aria-label="WhatsApp">
               <i data-lucide="message-circle" class="w-4 h-4"></i>
             </a>
@@ -1142,10 +1109,9 @@
             <li><a href="#carta-aberta" class="hover:text-tucano transition-colors">Amor por Toledo</a></li>
             <li><a href="#nossa-cidade" class="hover:text-tucano transition-colors">Nossa Cidade</a></li>
             <li><a href="#historia" class="hover:text-tucano transition-colors">Nossa História</a></li>
-            <li><a href="#realizacoes" class="hover:text-tucano transition-colors">Habitação e Obras</a></li>
-            <li><a href="#projetos" class="hover:text-tucano transition-colors text-tucano">Projetos em Andamento</a>
-            </li>
-            <li><a href="#comunidade" class="hover:text-tucano transition-colors">Cuidado com o Povo</a></li>
+            <li><a href="#realizacoes" class="hover:text-tucano transition-colors text-tucano font-semibold">Cuidado com
+                o Povo & Realizações</a></li>
+            <li><a href="#projetos" class="hover:text-tucano transition-colors">Projetos em Andamento</a></li>
           </ul>
         </div>
 

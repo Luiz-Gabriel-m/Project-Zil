@@ -240,6 +240,28 @@ body {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(250, 204, 21, 0.12);
 }
 
+/* ==========================================================================
+   MONITOR FRAME & CARDS DO GRID DE REALIZAÇÕES (ESTILO APPLE / RENAN SANTOS)
+   ========================================================================== */
+.realizacoes-monitor-frame {
+  background: radial-gradient(120% 120% at 50% 10%, rgba(15, 36, 68, 0.95) 0%, rgba(7, 16, 30, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.85), 0 0 50px -10px rgba(10, 25, 47, 0.6);
+}
+
+.realizacao-card {
+  position: relative;
+  background-color: var(--bg-navy-dark);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.45s ease;
+}
+
+.realizacao-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(250, 204, 21, 0.6);
+  box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.8), 0 0 30px -5px rgba(250, 204, 21, 0.25);
+}
+
+
 /* Gradientes Amarelo Tucano */
 .text-tucano-gradient {
   background: linear-gradient(135deg, #FEF08A 0%, #FACC15 50%, #EAB308 100%);
@@ -325,6 +347,35 @@ body {
 .gallery-card:hover {
   border-color: rgba(250, 204, 21, 0.3);
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(250, 204, 21, 0.1);
+}
+
+/* ==========================================================================
+   OTIMIZAÇÃO MOBILE-FIRST (320px a 424px)
+   ========================================================================== */
+@media (max-width: 424px) {
+  /* Títulos responsivos dinâmicos para não quebrar a tela */
+  .hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.35rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  /* Padding confortável e contenção lateral */
+  .realizacoes-monitor-frame {
+    padding: 1rem !important;
+    border-radius: 1.25rem !important;
+  }
+
+  /* Área de toque mínima de 48px para botões no mobile */
+  .realizacoes-monitor-frame a,
+  .realizacoes-monitor-frame button,
+  #hero-cta a,
+  #hero-cta button,
+  .open-official-channel {
+    min-height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
 }
 
 /* Acessibilidade: prefers-reduced-motion */

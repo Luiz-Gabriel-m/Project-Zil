@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initCartaAbertaAnimation();
     initCityStorytellingZoom();
     initTimelineAnimation();
+    initRealizacoesGridAnimation();
     initStatsCounters();
     initProjectsDashboard();
-    initGalleryAnimation();
   }
 
   // 4. Interações de Interface
@@ -328,6 +328,55 @@ function initTimelineAnimation() {
       }
     );
   });
+}
+
+/* ==========================================================================
+   5.1. ANIMAÇÃO DO GRID DE REALIZAÇÕES & GESTÃO PARTICIPATIVA
+   ========================================================================== */
+function initRealizacoesGridAnimation() {
+  const section = document.getElementById('realizacoes');
+  const monitor = document.querySelector('.realizacoes-monitor-frame');
+  const cards = document.querySelectorAll('.realizacao-card');
+
+  if (!section || !cards.length) return;
+
+  const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReduced) return;
+
+  if (monitor) {
+    gsap.fromTo(monitor,
+      { opacity: 0, y: 35, scale: 0.98 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: monitor,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  }
+
+  gsap.fromTo(cards,
+    { opacity: 0, y: 30, scale: 0.95 },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.75,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 75%',
+        toggleActions: 'play none none reverse'
+      }
+    }
+  );
 }
 
 /* ==========================================================================

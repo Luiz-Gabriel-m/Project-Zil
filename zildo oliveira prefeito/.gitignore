@@ -1,0 +1,5 @@
+# Sistema e Vercel
+*.zip
+.DS_Store
+Thumbs.db
+.vercel
