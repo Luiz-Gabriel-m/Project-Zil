@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zildo Oliveira | Trajetória, Gestão e Empreendedorismo</title>
+  <meta name="description"
+    content="Portal oficial de Zildo Oliveira: Trajetória empreendedora, projetos, liderança e atuação comunitária em Toledo-MG.">
+
+  <!-- Google Fonts: Montserrat & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              gold: '#EAB308',
+              goldHover: '#CA8A04',
+              goldDark: '#B45309',
+              navyDark: '#09152b',
+              navyDeep: '#060E1E',
+              navyMid: '#0b1f3f',
+              navyCard: '#0f2952',
+              slateLight: '#E2E8F0',
+              slateDark: '#1e293b'
+            }
+          },
+          fontFamily: {
+            sans: ['Montserrat', 'Inter', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    body {
+      background-color: #09152b;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism Card styling para secção escura */
+    .glass-card-dark {
+      background: rgba(15, 41, 82, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .glass-card-dark:hover {
+      border-color: #EAB308;
+      transform: translateY(-4px);
+      box-shadow: 0 25px 50px -12px rgba(234, 179, 8, 0.25);
+    }
+
+    /* Animação suave para o indicador de rolagem */
+    @keyframes bounce-slow {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    .animate-bounce-slow {
+      animation: bounce-slow 2s infinite ease-in-out;
+    }
+
+    /* Efeito de Borda/Contorno Branco Definido no Nome 'ZILDO' */
+    .title-zildo-stroke {
+      color: #09152b;
+      -webkit-text-stroke: 1.5px #ffffff;
+      paint-order: stroke fill;
+      text-shadow:
+        -1.5px -1.5px 0 #ffffff,
+         1.5px -1.5px 0 #ffffff,
+        -1.5px  1.5px 0 #ffffff,
+         1.5px  1.5px 0 #ffffff,
+         0 4px 16px rgba(0, 0, 0, 0.65);
+    }
+  </style>
+</head>
+
+<body class="bg-[#09152b] text-white min-h-screen antialiased selection:bg-brand-gold selection:text-black">
+
+  <!-- ==========================================================================
+       WRAPPER PRINCIPAL DO SCROLL CONTROLADO DA HERO (SCROLL-DRIVEN GSAP)
+       Inicia 100% branco no topo e transiciona suavemente para azul-marinho profundo
+       ========================================================================== -->
+  <div id="hero-scroll-wrapper" class="relative w-full h-[180vh]">
+
+    <!-- HERO CONTAINER STICKY (100dvh para experiência visual impecável) -->
+    <div id="hero-sticky-container"
+      class="sticky top-0 w-full h-[100dvh] overflow-hidden flex flex-col justify-between z-10 pb-3 sm:pb-5 bg-white transition-colors duration-200">
+
+      <!-- ======================================================================
+           CAMADA DE SOBREPOSIÇÃO AZUL-MARINHO PROFUNDO (OPACIDADE CONTROLADA POR SCROLL)
+           ====================================================================== -->
+      <div id="hero-navy-overlay"
+        class="absolute inset-0 bg-gradient-to-b from-[#060E1E] via-[#09152b] to-[#0A1730] opacity-0 pointer-events-none z-0">
+      </div>
+
+      <!-- ILUMINAÇÃO RADIAL ATRÁS DO PROFISSIONAL (SURGE SUAVEMENTE NO SCROLL) -->
+      <div id="hero-ambient-glow"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[500px] lg:w-[650px] h-[320px] sm:h-[500px] lg:h-[650px] rounded-full pointer-events-none z-5 opacity-0"
+        style="background: radial-gradient(circle, rgba(234, 179, 8, 0.22) 0%, rgba(11, 31, 63, 0.45) 45%, rgba(9, 21, 43, 0) 75%);">
+      </div>
+
+      <!-- ======================================================================
+           1. BARRA DE NAVEGAÇÃO SUPERIOR (NAVBAR) - Z-40
+           ====================================================================== -->
+      <header id="mainNav"
+        class="relative z-40 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 flex items-center justify-between flex-shrink-0">
+
+        <!-- Logotipo à Esquerda -->
+        <a href="#hero" class="flex items-center gap-2 group focus:outline-none" aria-label="Zildo Oliveira Início">
+          <span id="navLogoZildo"
+            class="text-[#09152b] font-black text-xl sm:text-2xl md:text-3xl tracking-wider uppercase transition-colors duration-200">
+            ZILDO
+          </span>
+          <span id="navLogoOliveira"
+            class="text-brand-gold font-black text-xl sm:text-2xl md:text-3xl tracking-wider uppercase">
+            OLIVEIRA
+          </span>
+        </a>
+
+        <!-- Redes Sociais Centralizadas (Desktop) -->
+        <div class="hidden md:flex items-center space-x-3">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+            class="nav-social-icon w-9 h-9 rounded-full border border-[#09152b]/20 bg-[#09152b]/5 flex items-center justify-center text-[#09152b] hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all duration-300">
+            <i class="fab fa-instagram text-sm"></i>
+          </a>
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+            class="nav-social-icon w-9 h-9 rounded-full border border-[#09152b]/20 bg-[#09152b]/5 flex items-center justify-center text-[#09152b] hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all duration-300">
+            <i class="fab fa-whatsapp text-sm"></i>
+          </a>
+          <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+            class="nav-social-icon w-9 h-9 rounded-full border border-[#09152b]/20 bg-[#09152b]/5 flex items-center justify-center text-[#09152b] hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all duration-300">
+            <i class="fab fa-telegram-plane text-sm"></i>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+            class="nav-social-icon w-9 h-9 rounded-full border border-[#09152b]/20 bg-[#09152b]/5 flex items-center justify-center text-[#09152b] hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all duration-300">
+            <i class="fab fa-linkedin-in text-sm"></i>
+          </a>
+        </div>
+
+        <!-- Lado Direito: Link Conheça a História + Logo Oficial ZIL -->
+        <div class="flex items-center space-x-4 sm:space-x-6">
+          <a href="#historia-section" id="navHistoryLink"
+            class="hidden sm:inline-block text-xs md:text-sm font-bold uppercase tracking-wider text-[#09152b] hover:text-brand-gold transition-colors duration-200">
+            CONHEÇA A HISTÓRIA
+          </a>
+
+          <!-- Logo Oficial ZIL Imagem -->
+          <div class="h-10 flex items-center justify-center">
+            <img src="assets/images/logo-zil.png" alt="Logotipo Oficial ZIL"
+              class="h-8 sm:h-10 w-auto object-contain filter drop-shadow-md hover:scale-105 transition-transform duration-300">
+          </div>
+
+          <!-- Mobile Menu Trigger -->
+          <button id="mobileMenuBtn" aria-label="Abrir Menu"
+            class="md:hidden text-[#09152b] p-2 focus:outline-none transition-colors duration-200">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- MENU MOBILE OVERLAY -->
+      <div id="mobileMenu"
+        class="fixed inset-0 z-50 bg-[#060E1E]/95 backdrop-blur-xl hidden flex-col items-center justify-center space-y-6 md:hidden">
+        <button id="closeMobileMenuBtn" aria-label="Fechar Menu" class="absolute top-6 right-6 text-white text-2xl p-2">
+          <i class="fas fa-times"></i>
+        </button>
+        <a href="#hero" class="mobile-nav-link text-xl font-bold uppercase tracking-wider text-white hover:text-brand-gold">Início</a>
+        <a href="#historia-section" class="mobile-nav-link text-xl font-bold uppercase tracking-wider text-white hover:text-brand-gold">Sua História</a>
+        <a href="#projetos" class="mobile-nav-link text-xl font-bold uppercase tracking-wider text-white hover:text-brand-gold">Projetos & Atuação</a>
+        <div class="flex items-center space-x-4 pt-4 border-t border-white/10">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-brand-gold text-xl"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-brand-gold text-xl"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-white hover:text-brand-gold text-xl"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <!-- ======================================================================
+           2. CONTEÚDO PRINCIPAL DA HERO COM SISTEMA DE CAMADAS RÍGIDO (Z-0, Z-10, Z-20)
+           ====================================================================== -->
+      <main class="relative z-10 flex-grow flex flex-col justify-end items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-1 sm:pb-3">
+
+        <div class="relative w-full flex flex-col items-center justify-center">
+
+          <!-- ==================================================================
+               CAMADA Z-0: ELEMENTO DECORATIVO LATERAL DIREITO ('SUA HISTÓRIA')
+               Afastado totalmente para a borda direita, com escala refinada e elegante,
+               sem encostar na foto nem colidir com os títulos principais.
+               Possui contraste dinâmico tanto no fundo claro quanto no escuro.
+               ================================================================== -->
+          <div
+            class="absolute right-2 sm:right-6 md:right-8 lg:right-12 xl:right-16 top-[36%] sm:top-[38%] -translate-y-1/2 z-0 text-right pointer-events-none select-none max-w-[200px] sm:max-w-xs md:max-w-sm">
+            <span id="heroLateralTag"
+              class="inline-block text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-brand-goldDark transition-colors duration-300 mb-0.5">
+              BIOGRAFIA
+            </span>
+            <h2 id="heroLateralTitle"
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black uppercase tracking-tight leading-tight text-brand-goldDark sm:text-brand-goldHover transition-colors duration-300">
+              SUA<br>HISTÓRIA
+            </h2>
+            <p id="heroLateralSub"
+              class="text-[10px] sm:text-xs md:text-sm font-extrabold uppercase tracking-widest text-[#09152b]/40 mt-1 transition-colors duration-300">
+              & TRAJETÓRIA
+            </p>
+          </div>
+
+          <!-- ==================================================================
+               CAMADA Z-10: RETRATO RECORTADO DO PROFISSIONAL (CANAL ALFA REAL)
+               Foto em PNG perfeitamente recortada com transparência pura.
+               Sem fundo quadriculado, sem caixas, sem bordas brancas.
+               Funde-se diretamente aos tons de branco e azul do background.
+               ================================================================== -->
+          <div class="relative z-10 flex justify-center items-end w-full">
+            <div class="w-72 sm:w-84 md:w-[440px] lg:w-[500px] xl:w-[540px] mx-auto relative flex justify-center">
+              <img src="assets/images/zildo-cutout.png" alt="Zildo Oliveira"
+                class="w-full h-auto object-contain max-h-[46vh] sm:max-h-[52vh] md:max-h-[58vh] lg:max-h-[64vh] mx-auto filter drop-shadow-2xl pointer-events-none select-none">
+            </div>
+          </div>
+
+          <!-- ==================================================================
+               CAMADA Z-20: TÍTULO MONUMENTAL, FRASE DE APOIO E BOTÕES DE AÇÃO
+               Destaque total na base com contraste nítido e legibilidade dinâmica.
+               ================================================================== -->
+          <div class="relative z-20 text-center w-full -mt-8 sm:-mt-12 md:-mt-14 lg:-mt-16">
+
+            <!-- NOME PRINCIPAL EM TIPOGRAFIA FORTE -->
+            <h1
+              class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight leading-none flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-4">
+              <span id="heroTitleZildo" class="title-zildo-stroke transition-colors duration-200">
+                ZILDO
+              </span>
+              <span id="heroTitleOliveira" class="text-brand-gold">
+                OLIVEIRA
+              </span>
+            </h1>
+
+            <!-- FRASE DE APOIO COM CONTRASTE ADAPTATIVO E ESPAÇAMENTO ABERTO -->
+            <p id="heroSubtitle"
+              class="mt-2 sm:mt-2.5 text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-widest text-slate-700 transition-colors duration-200">
+              SEU MELHOR ESTÁ POR VIR
+            </p>
+
+            <!-- BOTÕES PÍLULA CENTRAIS PERFEITAMENTE ALINHADOS -->
+            <div
+              class="mt-4 sm:mt-6 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 w-full max-w-lg mx-auto px-4">
+              <!-- Botão Primário: Amarelo Ouro Sólido (Alto contraste em ambos os fundos) -->
+              <a href="#historia-section" id="heroCtaPrimary"
+                class="w-full sm:w-auto bg-brand-gold hover:bg-brand-goldHover text-black font-black px-7 sm:px-8 py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl shadow-brand-gold/25 text-center">
+                CONHEÇA MINHA TRAJETÓRIA
+              </a>
+
+              <!-- Botão Secundário: Contorno Adaptativo -->
+              <a href="#projetos" id="heroCtaOutline"
+                class="w-full sm:w-auto bg-white/40 hover:bg-[#09152b] text-[#09152b] hover:text-white font-black px-7 sm:px-8 py-3.5 rounded-full border-2 border-[#09152b] text-xs sm:text-sm uppercase tracking-wider transition-all transform hover:scale-105 text-center shadow-xl backdrop-blur-sm">
+                VER PROJETOS E HISTÓRIA
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+
+      <!-- ======================================================================
+           3. INDICADOR DISCRETO DE ROLAGEM NO RODAPÉ DA HERO (Z-20)
+           ====================================================================== -->
+      <div id="scrollIndicator"
+        class="relative z-20 pb-3 pt-1 flex flex-col items-center justify-center text-center flex-shrink-0">
+        <a href="#historia-section" class="flex flex-col items-center group focus:outline-none"
+          aria-label="Rolar para a história">
+          <span id="scrollIndicatorText"
+            class="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#09152b] group-hover:text-brand-gold transition-colors duration-200">
+            VER MAIS
+          </span>
+          <i id="scrollIndicatorIcon"
+            class="fas fa-chevron-down text-xs text-[#09152b] group-hover:text-brand-gold mt-1 animate-bounce-slow transition-colors duration-200"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ==========================================================================
+       4. SECÇÃO — "SUA HISTÓRIA & TRAJETÓRIA" (FUNDO AZUL-MARINHO NOBRE)
+       ========================================================================== -->
+  <section id="historia-section"
+    class="relative z-30 bg-[#09152b] text-white py-20 sm:py-28 px-4 sm:px-6 lg:px-8 min-h-screen border-t border-white/10">
+
+    <div class="max-w-7xl mx-auto w-full space-y-16 sm:space-y-24">
+
+      <!-- CABEÇALHO DA SECÇÃO -->
+      <div class="text-center max-w-3xl mx-auto">
+        <span
+          class="inline-block bg-brand-gold/20 text-brand-gold text-xs font-black uppercase px-4 py-1.5 rounded-full tracking-widest mb-3 border border-brand-gold/30">
+          BIOGRAFIA & PROPÓSITO
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white leading-tight">
+          Uma Trajetória Pautada por Visão, Estratégia e Resultados
+        </h2>
+        <p class="text-gray-300 text-sm sm:text-base mt-4 font-body leading-relaxed">
+          Conheça os marcos da jornada empreendedora e comunitária de Zildo Oliveira. Uma história construída com
+          integridade, trabalho e compromisso com o futuro de Toledo.
+        </p>
+      </div>
+
+      <!-- LAYOUT EM 2 COLUNAS: PERFIL VISUAL + A HISTÓRIA -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+        <!-- Coluna Esquerda: Perfil Visual & Destaque -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-slate-900 group">
+            <img src="assets/images/zildo-portrait.jpg" alt="Zildo Oliveira Executivo"
+              class="w-full h-auto object-cover max-h-[460px] group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-navyDark/90 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <span class="text-brand-gold text-xs font-bold uppercase tracking-widest block">Zildo Oliveira</span>
+              <span class="text-sm font-semibold opacity-90">Liderança Executiva & Empreendedor</span>
+            </div>
+          </div>
+
+          <!-- Citação de Impacto -->
+          <div
+            class="bg-gradient-to-r from-[#0B1D3A] to-[#0A1730] text-white p-6 rounded-2xl shadow-lg border-l-4 border-brand-gold">
+            <p class="italic text-sm sm:text-base font-medium leading-relaxed font-body">
+              &ldquo;Transformar desafios em oportunidades e liderar pelo exemplo é o que move a minha jornada todos os
+              dias.&rdquo;
+            </p>
+          </div>
+
+          <!-- Ficha Resumo Rápida -->
+          <div class="glass-card-dark p-5 rounded-2xl space-y-3 font-body text-xs sm:text-sm">
+            <div class="flex items-center justify-between border-b border-white/10 pb-2">
+              <span class="font-bold text-gray-400 uppercase">Atuação:</span>
+              <span class="font-extrabold text-brand-gold">Empreendedorismo & Inovação</span>
+            </div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-2">
+              <span class="font-bold text-gray-400 uppercase">Foco:</span>
+              <span class="font-extrabold text-white">Criação & Escala de Negócios</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-gray-400 uppercase">Base:</span>
+              <span class="font-extrabold text-white">Toledo - MG</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: A História detalhada -->
+        <div class="lg:col-span-7 space-y-6 font-body leading-relaxed text-sm sm:text-base">
+
+          <!-- Bloco 1: Os Primeiros Passos -->
+          <div class="glass-card-dark p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+            <div class="flex items-center gap-3 mb-3">
+              <div
+                class="w-10 h-10 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center font-black text-lg">
+                01
+              </div>
+              <h3 class="text-lg sm:text-xl font-extrabold font-sans text-white uppercase">
+                Os Primeiros Passos: Vocação e Trabalho
+              </h3>
+            </div>
+            <p class="text-gray-200">
+              A trajetória de Zildo Oliveira teve início no trabalho diário como balconista de farmácia, onde
+              desenvolveu a escuta atenta e o respeito direto ao cidadão. Movido pela determinação e disciplina,
+              transformou aprendizados em impulso para fundar e expandir a <strong
+                class="text-brand-gold">Farmazil</strong>, consolidando sua reputação no comércio local.
+            </p>
+          </div>
+
+          <!-- Bloco 2: Evolução & Maturidade Profissional -->
+          <div class="glass-card-dark p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+            <div class="flex items-center gap-3 mb-3">
+              <div
+                class="w-10 h-10 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center font-black text-lg">
+                02
+              </div>
+              <h3 class="text-lg sm:text-xl font-extrabold font-sans text-white uppercase">
+                Evolução & Maturidade Executiva
+              </h3>
+            </div>
+            <p class="text-gray-200">
+              Com o crescimento de seus empreendimentos, Zildo expandiu sua atuação para o setor corporativo e de
+              desenvolvimento imobiliário através da <strong class="text-brand-gold">Zil Empreendimentos</strong>. Sua
+              gestão é reconhecida pela capacidade analítica, planejamento estratégico rigoroso e visão de longo prazo
+              para fortalecer Toledo.
+            </p>
+          </div>
+
+          <!-- Bloco 3: Filosofia & Valores -->
+          <div class="glass-card-dark p-6 rounded-2xl hover:border-brand-gold/50 transition-colors">
+            <div class="flex items-center gap-3 mb-3">
+              <div
+                class="w-10 h-10 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center font-black text-lg">
+                03
+              </div>
+              <h3 class="text-lg sm:text-xl font-extrabold font-sans text-white uppercase">
+                Filosofia: Excelência e Cuidado com as Pessoas
+              </h3>
+            </div>
+            <p class="text-gray-200">
+              Para Zildo, o sucesso de qualquer empreendimento ou projeto coletivo reside no investimento em pessoas. Sua
+              filosofia combina consistência operacional, ética inegociável e dedicação constante a servir a comunidade
+              com soluções práticas e duradouras.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- LINHA DO TEMPO / MARCOS DA TRAJETÓRIA -->
+      <div class="pt-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-brand-gold block mb-1">
+            EVOLUÇÃO CRONOLÓGICA
+          </span>
+          <h3 class="text-2xl sm:text-4xl font-black uppercase text-white">
+            Marcos da Trajetória
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+          <!-- Marco 1 -->
+          <div
+            class="glass-card-dark p-6 rounded-2xl relative group hover:border-brand-gold transition-all duration-300">
+            <span class="text-brand-gold font-black text-2xl font-sans block mb-2">01. Fundação</span>
+            <h4 class="font-bold text-base font-sans uppercase mb-2 text-white group-hover:text-brand-gold">Início no
+              Mercado</h4>
+            <p class="text-xs font-body text-gray-200 leading-relaxed">
+              Trabalho como balconista e fundação da marca Farmazil com foco em atendimento humano.
+            </p>
+          </div>
+
+          <!-- Marco 2 -->
+          <div
+            class="glass-card-dark p-6 rounded-2xl relative group hover:border-brand-gold transition-all duration-300">
+            <span class="text-brand-gold font-black text-2xl font-sans block mb-2">02. Expansão</span>
+            <h4 class="font-bold text-base font-sans uppercase mb-2 text-white group-hover:text-brand-gold">Zil
+              Empreendimentos</h4>
+            <p class="text-xs font-body text-gray-200 leading-relaxed">
+              Diversificação dos negócios para o setor imobiliário e corporativo de grande porte.
+            </p>
+          </div>
+
+          <!-- Marco 3 -->
+          <div
+            class="glass-card-dark p-6 rounded-2xl relative group hover:border-brand-gold transition-all duration-300">
+            <span class="text-brand-gold font-black text-2xl font-sans block mb-2">03. Liderança</span>
+            <h4 class="font-bold text-base font-sans uppercase mb-2 text-white group-hover:text-brand-gold">Gestão & Governança</h4>
+            <p class="text-xs font-body text-gray-200 leading-relaxed">
+              Atuação executiva e pública em Toledo-MG pautada pela eficiência e transparência.
+            </p>
+          </div>
+
+          <!-- Marco 4 -->
+          <div
+            class="glass-card-dark p-6 rounded-2xl relative group hover:border-brand-gold transition-all duration-300">
+            <span class="text-brand-gold font-black text-2xl font-sans block mb-2">04. Presente</span>
+            <h4 class="font-bold text-base font-sans uppercase mb-2 text-white group-hover:text-brand-gold">Mentoria & Impacto</h4>
+            <p class="text-xs font-body text-gray-200 leading-relaxed">
+              Capacitação de novas lideranças e execução contínua de projetos estruturantes.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PAINEL DE INDICADORES DE IMPACTO -->
+      <div
+        class="bg-gradient-to-r from-[#0B1D3A] via-[#0A1730] to-[#0B1D3A] text-white p-8 sm:p-12 rounded-3xl shadow-2xl border border-white/10">
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+
+          <div class="p-4">
+            <span class="text-3xl sm:text-5xl font-black font-sans text-brand-gold block mb-1">+15</span>
+            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-200">Anos de Experiência
+              Executiva</span>
+          </div>
+
+          <div class="p-4 pt-6 md:pt-4">
+            <span class="text-3xl sm:text-5xl font-black font-sans text-brand-gold block mb-1">+100</span>
+            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-200">Projetos & Operações
+              Lideradas</span>
+          </div>
+
+          <div class="p-4 pt-6 md:pt-4">
+            <span class="text-3xl sm:text-5xl font-black font-sans text-brand-gold block mb-1">Top Tier</span>
+            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-200">Reconhecimento &
+              Governança</span>
+          </div>
+
+          <div class="p-4 pt-6 md:pt-4">
+            <span class="text-3xl sm:text-5xl font-black font-sans text-brand-gold block mb-1">100%</span>
+            <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-gray-200">Dedicação a
+              Toledo-MG</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GRID DE CARDS DOS PROJETOS PRINCIPAIS -->
+      <div id="projetos" class="pt-6">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-brand-gold block mb-1">
+            PORTFÓLIO & INICIATIVAS
+          </span>
+          <h3 class="text-2xl sm:text-4xl font-black uppercase text-white">
+            Empreendimentos & Atuação
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+
+          <!-- CARD 1: FARMAZIL -->
+          <article
+            class="glass-card-dark rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
+            <div class="relative h-48 w-full overflow-hidden bg-slate-900">
+              <img src="assets/images/farmazil.jpg" alt="Farmazil"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5 flex flex-col flex-grow justify-between">
+              <div>
+                <span
+                  class="inline-block bg-brand-gold text-black text-[10px] font-black uppercase px-2.5 py-0.5 rounded-md tracking-wider mb-2">
+                  TRAJETÓRIA
+                </span>
+                <h3
+                  class="text-white font-extrabold text-sm uppercase leading-tight group-hover:text-brand-gold transition-colors">
+                  FARMAZIL
+                </h3>
+              </div>
+              <p class="text-gray-300 text-xs leading-relaxed mt-2 font-body">
+                De balconista dedicado a proprietário de uma marca respeitada no setor farmacêutico.
+              </p>
+            </div>
+          </article>
+
+          <!-- CARD 2: FAMÍLIA -->
+          <article
+            class="glass-card-dark rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
+            <div class="relative h-48 w-full overflow-hidden bg-slate-900">
+              <img src="assets/images/familia.jpg" alt="Família"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5 flex flex-col flex-grow justify-between">
+              <div>
+                <span
+                  class="inline-block bg-brand-gold text-black text-[10px] font-black uppercase px-2.5 py-0.5 rounded-md tracking-wider mb-2">
+                  FAMÍLIA
+                </span>
+                <h3
+                  class="text-white font-extrabold text-sm uppercase leading-tight group-hover:text-brand-gold transition-colors">
+                  FAMÍLIA & VALORES
+                </h3>
+              </div>
+              <p class="text-gray-300 text-xs leading-relaxed mt-2 font-body">
+                A base sólida, união e o combustível diário para transformar vidas e propósitos.
+              </p>
+            </div>
+          </article>
+
+          <!-- CARD 3: EMPREENDIMENTOS & VISÃO: ZIL EMPREENDIMENTOS (LINK EXTERNO CLICÁVEL) -->
+          <a href="https://www.zilempreendimentos.com.br/" target="_blank" rel="noopener noreferrer"
+            class="glass-card-dark rounded-2xl overflow-hidden flex flex-col justify-between group transition-transform duration-300 hover:scale-[1.02] cursor-pointer hover:border-brand-gold hover:shadow-2xl hover:shadow-brand-gold/20 block"
+            aria-label="Acessar o site oficial da Zil Empreendimentos (abre em nova aba)">
+            <div class="relative h-48 w-full overflow-hidden bg-slate-900">
+              <img src="assets/images/empreendimentos.jpg" alt="Zil Empreendimentos"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <!-- Badge indicador de link externo -->
+              <div
+                class="absolute top-3 right-3 bg-[#060E1E]/80 backdrop-blur-md text-brand-gold text-[10px] font-black px-2.5 py-1 rounded-md border border-brand-gold/30 flex items-center gap-1.5 group-hover:bg-brand-gold group-hover:text-black transition-colors duration-300 shadow-md">
+                <span>VISITAR SITE</span>
+                <i class="fas fa-external-link-alt text-[9px]"></i>
+              </div>
+            </div>
+            <div class="p-5 flex flex-col flex-grow justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span
+                    class="inline-block bg-brand-gold text-black text-[10px] font-black uppercase px-2.5 py-0.5 rounded-md tracking-wider">
+                    EMPREENDIMENTOS & VISÃO
+                  </span>
+                  <span
+                    class="text-[10px] text-gray-400 font-bold flex items-center gap-1 group-hover:text-brand-gold transition-colors">
+                    zilempreendimentos.com.br
+                    <i class="fas fa-arrow-up-right-from-square text-[9px]"></i>
+                  </span>
+                </div>
+                <h3
+                  class="text-white font-extrabold text-sm uppercase leading-tight group-hover:text-brand-gold transition-colors flex items-center justify-between">
+                  <span>ZIL EMPREENDIMENTOS</span>
+                  <i class="fas fa-external-link-alt text-xs text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-0.5 -translate-y-0.5"></i>
+                </h3>
+              </div>
+              <p class="text-gray-300 text-xs leading-relaxed mt-2 font-body">
+                Visão inovadora para desenvolvimento urbano, investimentos e projetos de escala.
+              </p>
+            </div>
+          </a>
+
+          <!-- CARD 4: MENTORIA -->
+          <article
+            class="glass-card-dark rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
+            <div class="relative h-48 w-full overflow-hidden bg-slate-900">
+              <img src="assets/images/mentoria.jpg" alt="Mentoria"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5 flex flex-col flex-grow justify-between">
+              <div>
+                <span
+                  class="inline-block bg-brand-gold text-black text-[10px] font-black uppercase px-2.5 py-0.5 rounded-md tracking-wider mb-2">
+                  MENTORIA
+                </span>
+                <h3
+                  class="text-white font-extrabold text-sm uppercase leading-tight group-hover:text-brand-gold transition-colors">
+                  MENTORIA & LIDERANÇA
+                </h3>
+              </div>
+              <p class="text-gray-300 text-xs leading-relaxed mt-2 font-body">
+                Capacitando novos talentos e preparando a próxima geração para grandes conquistas.
+              </p>
+            </div>
+          </article>
+
+          <!-- CARD 5: COMUNIDADE -->
+          <article
+            class="glass-card-dark rounded-2xl overflow-hidden flex flex-col justify-between group transition-all duration-300">
+            <div class="relative h-48 w-full overflow-hidden bg-slate-900">
+              <img src="assets/images/comunidade.jpg" alt="Atuação Comunitária"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-5 flex flex-col flex-grow justify-between">
+              <div>
+                <span
+                  class="inline-block bg-brand-gold text-black text-[10px] font-black uppercase px-2.5 py-0.5 rounded-md tracking-wider mb-2">
+                  SOCIAL
+                </span>
+                <h3
+                  class="text-white font-extrabold text-sm uppercase leading-tight group-hover:text-brand-gold transition-colors">
+                  ATUAÇÃO COMUNITÁRIA
+                </h3>
+              </div>
+              <p class="text-gray-300 text-xs leading-relaxed mt-2 font-body">
+                Presença constante e trabalho dedicado às causas sociais e bem-estar em Toledo.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- CTA FINAL DA SECÇÃO -->
+      <div class="glass-card-dark p-8 sm:p-12 rounded-3xl text-center space-y-6">
+        <h3 class="text-2xl sm:text-3xl font-black uppercase text-white">
+          Quer Conhecer Mais Sobre os Projetos ou Agendar uma Reunião?
+        </h3>
+        <p class="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto font-body">
+          Acesse a apresentação institucional completa ou entre em contato diretamente com a equipe executiva.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <a href="mailto:contato@zildooliveira.com.br"
+            class="w-full sm:w-auto bg-brand-gold hover:bg-brand-goldHover text-black font-extrabold px-8 py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg">
+            SOLICITAR APRESENTAÇÃO INSTITUCIONAL
+          </a>
+          <a href="https://wa.me/" target="_blank" rel="noopener noreferrer"
+            class="w-full sm:w-auto bg-transparent hover:bg-white/10 text-white font-extrabold border-2 border-white px-8 py-3.5 rounded-full text-xs sm:text-sm uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg">
+            FALAR NO WHATSAPP
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ==========================================================================
+       5. RODAPÉ DA PÁGINA (FOOTER)
+       ========================================================================== -->
+  <footer class="bg-[#060E1E] text-white border-t border-white/10 py-10 px-4 sm:px-6 lg:px-8 relative z-30">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+
+      <div class="text-center md:text-left">
+        <span class="text-xs uppercase tracking-widest text-gray-400 font-bold block">Contato Institucional</span>
+        <a href="mailto:contato@zildooliveira.com.br"
+          class="text-brand-gold font-bold text-sm sm:text-base hover:underline">
+          contato@zildooliveira.com.br
+        </a>
+      </div>
+
+      <div class="text-center text-xs text-gray-400 font-body">
+        &copy; Copyright Zildo Oliveira de Toledo. Todos os direitos reservados.
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+          class="w-9 h-9 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all">
+          <i class="fab fa-instagram text-sm"></i>
+        </a>
+        <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+          class="w-9 h-9 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all">
+          <i class="fab fa-whatsapp text-sm"></i>
+        </a>
+        <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram"
+          class="w-9 h-9 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all">
+          <i class="fab fa-telegram-plane text-sm"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+          class="w-9 h-9 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-gray-300 hover:text-black hover:bg-brand-gold hover:border-brand-gold transition-all">
+          <i class="fab fa-linkedin-in text-sm"></i>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       6. SCRIPTS DE ANIMAÇÃO GSAP COM SCROLLTRIGGER (TRANSIÇÃO BRANCO -> AZUL-MARINHO)
+       ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Menu Mobile Toggle
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const closeMobileMenuBtn = document.getElementById('closeMobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.classList.add('flex');
+        });
+      }
+
+      if (closeMobileMenuBtn && mobileMenu) {
+        closeMobileMenuBtn.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+        });
+      }
+
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (mobileMenu) {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+          }
+        });
+      });
+
+      // Animações GSAP ScrollTrigger
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Timeline de transição controlada por scroll (Scrubbed)
+        const heroTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#hero-scroll-wrapper",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.5
+          }
+        });
+
+        // 1. Transição gradual da cor de fundo: Branco -> Azul-Marinho Profundo
+        heroTl.to("#hero-navy-overlay", {
+          opacity: 1,
+          ease: "none"
+        }, 0);
+
+        // 2. Iluminação radial ambiente que surge atrás da foto
+        heroTl.to("#hero-ambient-glow", {
+          opacity: 1,
+          scale: 1.15,
+          ease: "none"
+        }, 0);
+
+        // 3. Navbar: Transição de contraste de textos e ícones
+        heroTl.to("#navLogoZildo", {
+          color: "#ffffff",
+          ease: "none"
+        }, 0);
+
+        heroTl.to("#navHistoryLink", {
+          color: "#ffffff",
+          ease: "none"
+        }, 0);
+
+        heroTl.to("#mobileMenuBtn", {
+          color: "#ffffff",
+          ease: "none"
+        }, 0);
+
+        heroTl.to(".nav-social-icon", {
+          color: "#ffffff",
+          borderColor: "rgba(255, 255, 255, 0.25)",
+          backgroundColor: "rgba(255, 255, 255, 0.05)",
+          ease: "none"
+        }, 0);
+
+        // 4. Texto Lateral 'SUA HISTÓRIA': Contraste Dinâmico
+        heroTl.to("#heroLateralTag", {
+          color: "#EAB308",
+          ease: "none"
+        }, 0);
+
+        heroTl.to("#heroLateralTitle", {
+          color: "#EAB308",
+          textShadow: "0 4px 14px rgba(0, 0, 0, 0.4)",
+          ease: "none"
+        }, 0);
+
+        heroTl.to("#heroLateralSub", {
+          color: "rgba(255, 255, 255, 0.35)",
+          ease: "none"
+        }, 0);
+
+        // 5. Título Principal 'ZILDO OLIVEIRA' & Frase de Apoio
+        heroTl.to("#heroTitleZildo", {
+          color: "#08162e",
+          textShadow: "-1.5px -1.5px 0 #ffffff, 1.5px -1.5px 0 #ffffff, -1.5px 1.5px 0 #ffffff, 1.5px 1.5px 0 #ffffff, 0 6px 20px rgba(0, 0, 0, 0.9)",
+          ease: "none"
+        }, 0);
+
+        heroTl.to("#heroSubtitle", {
+          color: "#E2E8F0",
+          textShadow: "0 2px 8px rgba(0, 0, 0, 0.5)",
+          ease: "none"
+        }, 0);
+
+        // 6. Botão de Contorno (Outline CTA)
+        heroTl.to("#heroCtaOutline", {
+          borderColor: "#ffffff",
+          color: "#ffffff",
+          backgroundColor: "rgba(9, 21, 43, 0.5)",
+          ease: "none"
+        }, 0);
+
+        // 7. Indicador de Rolagem no Rodapé
+        heroTl.to("#scrollIndicatorText, #scrollIndicatorIcon", {
+          color: "#ffffff",
+          ease: "none"
+        }, 0);
+
+        // Entrada inicial dos elementos
+        gsap.from('#hero-sticky-container main img', {
+          duration: 1.1,
+          y: 35,
+          opacity: 0,
+          ease: 'power3.out'
+        });
+
+        gsap.from('#heroTitleZildo, #heroTitleOliveira', {
+          duration: 1,
+          y: 20,
+          opacity: 0,
+          delay: 0.15,
+          ease: 'power3.out'
+        });
+
+        gsap.from('#heroSubtitle', {
+          duration: 0.9,
+          y: 15,
+          opacity: 0,
+          delay: 0.3,
+          ease: 'power3.out'
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

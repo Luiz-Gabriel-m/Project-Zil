@@ -1,10 +1,9 @@
-# Backups e arquivos pesados
+# Backups e arquivos compactados pesados
 backups/
 *.zip
 **/*.zip
 
-# Projetos adicionais ignorados
-/zildo
+# Pastas vazias/futuras ignoradas
 /zilholding
 /zilimoveis
 
