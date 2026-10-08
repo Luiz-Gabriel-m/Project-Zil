@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initRealizacoesGridAnimation();
     initStatsCounters();
     initProjectsDashboard();
+    initQuemEZildo3D();
   }
 
   // 4. Interações de Interface
@@ -95,7 +96,6 @@ function initHeroContentEntrance() {
   const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (isReduced) return;
 
-  const eyebrow = document.getElementById('hero-eyebrow');
   const title = document.getElementById('hero-title');
   const desc = document.getElementById('hero-desc');
   const cta = document.getElementById('hero-cta');
@@ -103,18 +103,10 @@ function initHeroContentEntrance() {
 
   const tl = gsap.timeline({ delay: 0.2 });
 
-  if (eyebrow) {
-    tl.fromTo(eyebrow,
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
-    );
-  }
-
   if (title) {
     tl.fromTo(title,
       { opacity: 0, y: 25 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.3'
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
     );
   }
 
@@ -449,6 +441,13 @@ function initMobileNav() {
   btn.addEventListener('click', openMenu);
   if (close) close.addEventListener('click', closeMenu);
   links.forEach(l => l.addEventListener('click', closeMenu));
+
+  // Fecha automaticamente o menu mobile se a tela for redimensionada para desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1280 && !menu.classList.contains('hidden')) {
+      closeMenu();
+    }
+  });
 }
 
 /* ==========================================================================
@@ -646,4 +645,91 @@ function initGalleryAnimation() {
     );
   });
 }
+
+/* ==========================================================================
+   12. QUEM É ZILDO OLIVEIRA - INTERATIVIDADE 3D & EFEITOS DE PERSPECTIVA
+   ========================================================================== */
+function initQuemEZildo3D() {
+  const section = document.getElementById('quem-e-zildo');
+  if (!section) return;
+
+  const tiltCards = section.querySelectorAll('.tilt-card-3d');
+  const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Interatividade 3D Tilt com Mouse
+  tiltCards.forEach(card => {
+    let bounds;
+
+    function onMouseEnter() {
+      bounds = card.getBoundingClientRect();
+    }
+
+    function onMouseMove(e) {
+      if (isReduced) return;
+      if (!bounds) bounds = card.getBoundingClientRect();
+
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+
+      const xPct = mouseX / bounds.width;
+      const yPct = mouseY / bounds.height;
+
+      // Ângulos de rotação 3D (máx +/- 12 graus)
+      const rotateX = ((yPct - 0.5) * -24).toFixed(2);
+      const rotateY = ((xPct - 0.5) * 24).toFixed(2);
+
+      // Atualiza coordenadas do brilho de reflexo holográfico
+      card.style.setProperty('--mouse-x', `${(xPct * 100).toFixed(1)}%`);
+      card.style.setProperty('--mouse-y', `${(yPct * 100).toFixed(1)}%`);
+
+      // Aplica rotação 3D suave com leve escala
+      gsap.to(card, {
+        rotateX: rotateX,
+        rotateY: rotateY,
+        transformPerspective: 1000,
+        scale: 1.02,
+        duration: 0.25,
+        ease: 'power1.out',
+        overwrite: 'auto'
+      });
+    }
+
+    function onMouseLeave() {
+      gsap.to(card, {
+        rotateX: 0,
+        rotateY: 0,
+        scale: 1,
+        duration: 0.7,
+        ease: 'elastic.out(1, 0.5)',
+        overwrite: 'auto'
+      });
+    }
+
+    card.addEventListener('mouseenter', onMouseEnter);
+    card.addEventListener('mousemove', onMouseMove);
+    card.addEventListener('mouseleave', onMouseLeave);
+  });
+
+
+
+  // Animação de entrada do container principal de conteúdo
+  const mainShowcase = section.querySelector('.zildo-3d-showcase');
+  if (mainShowcase && !isReduced) {
+    gsap.fromTo(mainShowcase,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: mainShowcase,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  }
+}
+
 
